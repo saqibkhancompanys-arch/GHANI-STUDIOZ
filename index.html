@@ -489,7 +489,7 @@
   </div>
 </div>
 
-<!-- Main App Content (hidden until logged in) -->
+<!-- Main App Content -->
 <div id="appContent" style="display:none;">
 
 <div class="brand-title">GHANI STUDIOZ</div>
@@ -515,7 +515,7 @@
       <option value="On Hold">On Hold</option>
       <option value="Cancelled">Cancelled</option>
     </select>
-    <button class="btn btn-primary" id="addBtn">+ Add Client</button>
+    <button class="btn btn-primary" id="addBtn" style="display:none;">+ Add Client</button>
   </div>
 
   <div class="grid" id="clientGrid"></div>
@@ -605,7 +605,7 @@
 
     <div class="videos-summary" id="videosSummary"></div>
 
-    <div class="video-form">
+    <div class="video-form" id="videoForm" style="display:none;">
       <label class="full">Video Name (base name)
         <input id="v_name" type="text" placeholder="e.g. Ghani Vlog">
       </label>
@@ -632,15 +632,13 @@
 </div>
 
 </div>
-<!-- /appContent -->
 
-<!-- Firebase SDK Scripts Modules Insertion -->
+<!-- Firebase Scripts -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  // Ghani Studioz Authenticated Project Config Details
   const firebaseConfig = {
     apiKey: "AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSHT3lc",
     authDomain: "ghani-studioz.firebaseapp.com",
@@ -687,14 +685,27 @@
     signOut(auth);
   });
 
+  // Admin Flag
+  let isAdmin = false;
+
   onAuthStateChanged(auth, (user) => {
     if(user){
       loginScreen.style.display = 'none';
       appContent.style.display = 'block';
+      
+      // Checking for admin email
+      isAdmin = (user.email === 'admin@ghanistudioz.com');
+      
+      const addBtn = document.getElementById('addBtn');
+      if (addBtn) {
+        addBtn.style.display = isAdmin ? 'inline-block' : 'none';
+      }
+
       startClientsListener();
     } else {
       loginScreen.style.display = 'flex';
       appContent.style.display = 'none';
+      isAdmin = false;
       if(unsubscribeClients){ unsubscribeClients(); unsubscribeClients = null; }
     }
   });
@@ -720,19 +731,17 @@
   buildSprockets();
   window.addEventListener('resize', buildSprockets);
 
-  // Firestore Realtime Database Listener Integration
   function startClientsListener(){
-    if(unsubscribeClients) return; // already listening
+    if(unsubscribeClients) return;
     unsubscribeClients = onSnapshot(clientsCollection, (snapshot) => {
       clients = [];
       snapshot.forEach((doc) => {
         clients.push(doc.data());
       });
-      // Sorting to keep consistency
       clients.sort((a, b) => b.id.localeCompare(a.id));
       render();
     }, (error) => {
-      console.error("Firestore loading error: ", error);
+      console.error("Firestore error: ", error);
     });
   }
 
@@ -759,11 +768,14 @@
     grid.innerHTML = '';
     emptyState.style.display = filtered.length ? 'none' : 'block';
 
-    const addTile = document.createElement('div');
-    addTile.className = 'card add-tile';
-    addTile.innerHTML = `<div class="plus-icon">+</div><div class="add-label">New Client</div>`;
-    addTile.addEventListener('click', ()=>openModal(null));
-    grid.appendChild(addTile);
+    // Show empty + tile only if admin is logged in
+    if (isAdmin) {
+      const addTile = document.createElement('div');
+      addTile.className = 'card add-tile';
+      addTile.innerHTML = `<div class="plus-icon">+</div><div class="add-label">New Client</div>`;
+      addTile.addEventListener('click', ()=>openModal(null));
+      grid.appendChild(addTile);
+    }
 
     filtered.forEach(c=>{
       const card = document.createElement('div');
@@ -789,10 +801,14 @@
         <button class="videos-btn" data-videos="${c.uid}">
           🎬 Videos <span class="vcount">${(c.videos||[]).reduce((s,b)=>s+Number(b.count||0),0)}</span>
         </button>
+        
+        <!-- Actions only visible to admin -->
+        ${isAdmin ? `
         <div class="card-actions">
           <button class="btn btn-ghost btn-small edit-btn-trigger" data-edit="${c.uid}">Edit</button>
           <button class="btn btn-danger btn-small" data-del="${c.uid}">Delete</button>
         </div>
+        ` : ''}
       `;
       grid.appendChild(card);
     });
@@ -832,6 +848,7 @@
   }
 
   function openModal(uid){
+    if(!isAdmin) return;
     editingId = uid || null;
     document.getElementById('modalTitle').textContent = uid ? 'Edit Client' : 'Add Client';
     const c = uid ? clients.find(x=>x.uid===uid) : null;
@@ -867,11 +884,12 @@
   }
 
   async function deleteClient(uid){
+    if(!isAdmin) return;
     if(!confirm('Delete this client?')) return;
     try {
       await deleteDoc(doc(db, "clients", uid));
     } catch(e) {
-      console.error("Error deleting document: ", e);
+      console.error("Error deleting: ", e);
     }
   }
 
@@ -879,18 +897,10 @@
   document.getElementById('cancelBtn').addEventListener('click', closeModal);
   overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
 
-  let isSaving = false; // duplicate prevent karne ke liye
-
   document.getElementById('saveBtn').addEventListener('click', async ()=>{
-    if(isSaving) return; // agar already saving hai to kuch na karo
-    
+    if(!isAdmin) return;
     const name = document.getElementById('f_name').value.trim();
     if(!name){ alert('Name is required'); return; }
-
-    const saveBtn = document.getElementById('saveBtn');
-    isSaving = true;
-    saveBtn.disabled = true;
-    saveBtn.textContent = 'Saving...';
 
     const uid = editingId ? editingId : 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
     const existingClient = editingId ? clients.find(c => c.uid === editingId) : null;
@@ -917,15 +927,10 @@
 
     try {
       await setDoc(doc(db, "clients", uid), data);
-      closeModal(); // modal band karo = "back" chale jao
-      render();     // list refresh karo taake naya client nazar aaye
+      closeModal();
     } catch(e) {
       alert("Database error saving client.");
       console.error(e);
-    } finally {
-      isSaving = false;
-      saveBtn.disabled = false;
-      saveBtn.textContent = 'Save';
     }
   });
 
@@ -948,6 +953,12 @@
     document.getElementById('v_editedcount').value = '0';
     document.getElementById('v_edited').value = '';
     document.getElementById('v_price').value = c.fee || '';
+
+    // Show input form only for admin
+    const videoForm = document.getElementById('videoForm');
+    if (videoForm) {
+      videoForm.style.display = isAdmin ? 'grid' : 'none';
+    }
 
     renderVideoList();
     videosOverlay.classList.add('show');
@@ -975,7 +986,7 @@
 
     const list = document.getElementById('videoList');
     if(!batches.length){
-      list.innerHTML = `<div class="video-empty">No batches logged yet. Add the first one above.</div>`;
+      list.innerHTML = `<div class="video-empty">No batches logged yet.</div>`;
       return;
     }
 
@@ -1002,13 +1013,14 @@
             <span class="k">· Value:</span> <span>PKR ${batchTotal.toLocaleString()} (@${Number(b.price||0).toLocaleString()}/video)</span>
           </div>
         </div>
-        <button class="btn btn-danger btn-small" data-delvideo="${b._idx}">Delete</button>
+        ${isAdmin ? `<button class="btn btn-danger btn-small" data-delvideo="${b._idx}">Delete</button>` : ''}
       </div>
     `;}).join('');
 
     list.querySelectorAll('[data-delvideo]').forEach(b=>{
       b.onclick = async (e)=>{
         e.preventDefault();
+        if(!isAdmin) return;
         const idx = Number(b.getAttribute('data-delvideo'));
         c.videos.splice(idx,1);
         try {
@@ -1022,6 +1034,7 @@
   }
 
   document.getElementById('addVideoBtn').addEventListener('click', async ()=>{
+    if(!isAdmin) return;
     const c = clients.find(x=>x.uid===videosClientId);
     if(!c) return;
     const vname = document.getElementById('v_name').value.trim();
