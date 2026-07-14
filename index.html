@@ -496,7 +496,10 @@
 <div class="sprocket-bar" id="sprocketBar"></div>
 
 <header style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
-  <h1>Client <span>Details</span></h1>
+  <div>
+    <h1>Client <span>Details</span></h1>
+    <div id="roleBadge" style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--text-dim); margin-top:4px; text-transform:uppercase; letter-spacing:1px;">Role: Loading...</div>
+  </div>
   <button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button>
 </header>
 
@@ -685,17 +688,30 @@
     signOut(auth);
   });
 
-  // Admin Flag
+  // Role Access Flags
   let isAdmin = false;
+  let isViewer = false;
 
   onAuthStateChanged(auth, (user) => {
     if(user){
       loginScreen.style.display = 'none';
       appContent.style.display = 'block';
       
-      // Checking for admin email
+      // Admin vs Viewer Check
       isAdmin = (user.email === 'admin@ghanistudioz.com');
+      isViewer = (user.email === 'viewer@ghanistudioz.com');
       
+      const roleBadge = document.getElementById('roleBadge');
+      if (roleBadge) {
+        if (isAdmin) {
+          roleBadge.innerHTML = 'Role: <span style="color:var(--gold)">Admin</span>';
+        } else if (isViewer) {
+          roleBadge.innerHTML = 'Role: <span style="color:var(--purple-soft)">Viewer (Read-Only)</span>';
+        } else {
+          roleBadge.innerHTML = 'Role: Unauthorized';
+        }
+      }
+
       const addBtn = document.getElementById('addBtn');
       if (addBtn) {
         addBtn.style.display = isAdmin ? 'inline-block' : 'none';
@@ -706,6 +722,7 @@
       loginScreen.style.display = 'flex';
       appContent.style.display = 'none';
       isAdmin = false;
+      isViewer = false;
       if(unsubscribeClients){ unsubscribeClients(); unsubscribeClients = null; }
     }
   });
