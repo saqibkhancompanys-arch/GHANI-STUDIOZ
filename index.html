@@ -879,9 +879,18 @@
   document.getElementById('cancelBtn').addEventListener('click', closeModal);
   overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
 
+  let isSaving = false; // duplicate prevent karne ke liye
+
   document.getElementById('saveBtn').addEventListener('click', async ()=>{
+    if(isSaving) return; // agar already saving hai to kuch na karo
+    
     const name = document.getElementById('f_name').value.trim();
     if(!name){ alert('Name is required'); return; }
+
+    const saveBtn = document.getElementById('saveBtn');
+    isSaving = true;
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving...';
 
     const uid = editingId ? editingId : 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
     const existingClient = editingId ? clients.find(c => c.uid === editingId) : null;
@@ -908,10 +917,15 @@
 
     try {
       await setDoc(doc(db, "clients", uid), data);
-      closeModal();
+      closeModal(); // modal band karo = "back" chale jao
+      render();     // list refresh karo taake naya client nazar aaye
     } catch(e) {
       alert("Database error saving client.");
       console.error(e);
+    } finally {
+      isSaving = false;
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save';
     }
   });
 
