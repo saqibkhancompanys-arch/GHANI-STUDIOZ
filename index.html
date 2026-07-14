@@ -474,11 +474,30 @@
 </head>
 <body>
 
+<!-- Login Screen -->
+<div id="loginScreen" style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;">
+  <div style="width:100%; max-width:360px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:32px 28px;">
+    <div style="text-align:center; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:28px; letter-spacing:1px; background:linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--purple-soft)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:22px;">GHANI STUDIOZ</div>
+    <label style="display:block; margin-bottom:14px; font-size:13px; color:var(--text-dim);">Email
+      <input id="loginEmail" type="email" placeholder="you@example.com" style="width:100%; margin-top:6px;">
+    </label>
+    <label style="display:block; margin-bottom:18px; font-size:13px; color:var(--text-dim);">Password
+      <input id="loginPassword" type="password" placeholder="••••••••" style="width:100%; margin-top:6px;">
+    </label>
+    <button class="btn btn-primary" id="loginBtn" style="width:100%;">Log In</button>
+    <div id="loginError" style="color:var(--red); font-size:13px; margin-top:12px; text-align:center; display:none;"></div>
+  </div>
+</div>
+
+<!-- Main App Content (hidden until logged in) -->
+<div id="appContent" style="display:none;">
+
 <div class="brand-title">GHANI STUDIOZ</div>
 <div class="sprocket-bar" id="sprocketBar"></div>
 
-<header>
+<header style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
   <h1>Client <span>Details</span></h1>
+  <button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button>
 </header>
 
 <div class="stats">
@@ -612,10 +631,14 @@
   </div>
 </div>
 
+</div>
+<!-- /appContent -->
+
 <!-- Firebase SDK Scripts Modules Insertion -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
   // Ghani Studioz Authenticated Project Config Details
   const firebaseConfig = {
@@ -629,7 +652,51 @@
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  const auth = getAuth(app);
   const clientsCollection = collection(db, "clients");
+
+  /* ---------- Login / Auth ---------- */
+  const loginScreen = document.getElementById('loginScreen');
+  const appContent = document.getElementById('appContent');
+  const loginError = document.getElementById('loginError');
+  let unsubscribeClients = null;
+
+  document.getElementById('loginBtn').addEventListener('click', doLogin);
+  document.getElementById('loginPassword').addEventListener('keydown', (e)=>{ if(e.key === 'Enter') doLogin(); });
+
+  async function doLogin(){
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    loginError.style.display = 'none';
+    if(!email || !password){
+      loginError.textContent = 'Email aur password dono likhein.';
+      loginError.style.display = 'block';
+      return;
+    }
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch(e){
+      loginError.textContent = 'Login fail ho gaya. Email/password check karein.';
+      loginError.style.display = 'block';
+      console.error(e);
+    }
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', ()=>{
+    signOut(auth);
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    if(user){
+      loginScreen.style.display = 'none';
+      appContent.style.display = 'block';
+      startClientsListener();
+    } else {
+      loginScreen.style.display = 'flex';
+      appContent.style.display = 'none';
+      if(unsubscribeClients){ unsubscribeClients(); unsubscribeClients = null; }
+    }
+  });
 
   let clients = [];
   let editingId = null;
@@ -653,17 +720,20 @@
   window.addEventListener('resize', buildSprockets);
 
   // Firestore Realtime Database Listener Integration
-  onSnapshot(clientsCollection, (snapshot) => {
-    clients = [];
-    snapshot.forEach((doc) => {
-      clients.push(doc.data());
+  function startClientsListener(){
+    if(unsubscribeClients) return; // already listening
+    unsubscribeClients = onSnapshot(clientsCollection, (snapshot) => {
+      clients = [];
+      snapshot.forEach((doc) => {
+        clients.push(doc.data());
+      });
+      // Sorting to keep consistency
+      clients.sort((a, b) => b.id.localeCompare(a.id));
+      render();
+    }, (error) => {
+      console.error("Firestore loading error: ", error);
     });
-    // Sorting to keep consistency
-    clients.sort((a, b) => b.id.localeCompare(a.id));
-    render();
-  }, (error) => {
-    console.error("Firestore loading error: ", error);
-  });
+  }
 
   function statusTagClass(status){
     return {
