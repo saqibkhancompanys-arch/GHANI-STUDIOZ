@@ -642,12 +642,13 @@
 
   // Ghani Studioz Authenticated Project Config Details
   const firebaseConfig = {
-    apiKey: "AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSH3lc",
+    apiKey: "AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSHT3lc",
     authDomain: "ghani-studioz.firebaseapp.com",
     projectId: "ghani-studioz",
-    storageBucket: "ghani-studioz.appspot.com",
+    storageBucket: "ghani-studioz.firebasestorage.app",
     messagingSenderId: "651062801971",
-    appId: "1:651062801971:web:5b34cba89803e0617b9546"
+    appId: "1:651062801971:web:5b34cba89803e0617b9546",
+    measurementId: "G-FNEY2YG9JZ"
   };
 
   const app = initializeApp(firebaseConfig);
@@ -789,21 +790,30 @@
           🎬 Videos <span class="vcount">${(c.videos||[]).reduce((s,b)=>s+Number(b.count||0),0)}</span>
         </button>
         <div class="card-actions">
-          <button class="btn btn-ghost btn-small" data-edit="${c.uid}">Edit</button>
+          <button class="btn btn-ghost btn-small edit-btn-trigger" data-edit="${c.uid}">Edit</button>
           <button class="btn btn-danger btn-small" data-del="${c.uid}">Delete</button>
         </div>
       `;
       grid.appendChild(card);
     });
 
-    document.querySelectorAll('[data-edit]').forEach(b=>{
-      b.addEventListener('click', () => openModal(b.getAttribute('data-edit')));
+    document.querySelectorAll('.edit-btn-trigger').forEach(b=>{
+      b.onclick = (e) => {
+        e.preventDefault();
+        openModal(b.getAttribute('data-edit'));
+      };
     });
     document.querySelectorAll('[data-del]').forEach(b=>{
-      b.addEventListener('click', () => deleteClient(b.getAttribute('data-del')));
+      b.onclick = (e) => {
+        e.preventDefault();
+        deleteClient(b.getAttribute('data-del'));
+      };
     });
     document.querySelectorAll('[data-videos]').forEach(b=>{
-      b.addEventListener('click', () => openVideosModal(b.getAttribute('data-videos')));
+      b.onclick = (e) => {
+        e.preventDefault();
+        openVideosModal(b.getAttribute('data-videos'));
+      };
     });
 
     updateStats();
@@ -983,7 +993,8 @@
     `;}).join('');
 
     list.querySelectorAll('[data-delvideo]').forEach(b=>{
-      b.addEventListener('click', async ()=>{
+      b.onclick = async (e)=>{
+        e.preventDefault();
         const idx = Number(b.getAttribute('data-delvideo'));
         c.videos.splice(idx,1);
         try {
@@ -992,7 +1003,7 @@
         } catch(e) {
           console.error(e);
         }
-      });
+      };
     });
   }
 
