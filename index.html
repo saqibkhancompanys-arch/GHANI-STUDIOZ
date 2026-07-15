@@ -68,14 +68,6 @@
     max-width:1180px;
     margin:0 auto;
   }
-  .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    letter-spacing:3px;
-    color:var(--gold);
-    text-transform:uppercase;
-    margin-bottom:10px;
-  }
   h1{
     font-family:'Space Grotesk', sans-serif;
     font-size:44px;
@@ -84,7 +76,7 @@
     letter-spacing:-0.5px;
   }
   h1 span{ color:var(--gold); }
-  .sub{ color:var(--text-dim); font-size:15px; max-width:520px; }
+  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:6px; }
   .stats{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -151,7 +143,6 @@
   }
   .btn:hover{ transform:translateY(-1px); }
   .btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
-  .btn:focus-visible{ outline:2px solid var(--gold-soft); outline-offset:2px; }
   .btn-primary{
     background:linear-gradient(135deg, var(--gold), #d98f2e);
     color:#1a1206;
@@ -180,7 +171,7 @@
     border-radius:12px;
     padding:18px;
     position:relative;
-    transition:border-color .15s ease, transform .15s ease;
+    transition:border-color .15s ease;
   }
   .card:hover{ border-color:var(--purple-soft); }
   .add-tile{
@@ -233,15 +224,11 @@
     padding:3px 9px;
     border-radius:20px;
     text-transform:uppercase;
-    letter-spacing:0.4px;
   }
   .tag-active{ background:rgba(74,222,128,0.15); color:var(--green); }
   .tag-completed{ background:rgba(138,79,201,0.2); color:var(--purple-soft); }
   .tag-hold{ background:rgba(232,167,73,0.18); color:var(--gold-soft); }
   .tag-cancelled{ background:rgba(242,114,114,0.15); color:var(--red); }
-  .pay-paid{ color:var(--green); }
-  .pay-unpaid{ color:var(--red); }
-  .pay-partial, .pay-advance{ color:var(--gold-soft); }
   .field-row{
     display:flex;
     justify-content:space-between;
@@ -250,8 +237,7 @@
     border-bottom:1px dashed rgba(255,255,255,0.06);
     gap:12px;
   }
-  .field-row:last-of-type{ border-bottom:none; }
-  .field-row .k{ color:var(--text-dim); flex-shrink:0; }
+  .field-row .k{ color:var(--text-dim); }
   .field-row .v{ font-weight:500; text-align:right; word-break:break-all; }
   .card-actions{ display:flex; gap:8px; margin-top:14px; }
   .videos-btn{
@@ -270,9 +256,7 @@
     align-items:center;
     justify-content:center;
     gap:8px;
-    transition:background .15s ease;
   }
-  .videos-btn:hover{ background:rgba(138,79,201,0.22); }
   .videos-btn .vcount{
     background:var(--purple-soft);
     color:#1a1029;
@@ -288,12 +272,7 @@
     border:1px dashed var(--line);
     border-radius:12px;
   }
-  .empty .big{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:20px;
-    color:var(--text);
-    margin-bottom:8px;
-  }
+  .empty .big{ font-family:'Space Grotesk', sans-serif; font-size:20px; color:var(--text); margin-bottom:8px; }
   .overlay{
     position:fixed; inset:0;
     background:rgba(10,6,16,0.7);
@@ -315,137 +294,36 @@
     overflow-y:auto;
     padding:26px;
   }
-  .modal h2{
-    font-family:'Space Grotesk', sans-serif;
-    margin:0 0 18px;
-    font-size:22px;
-  }
-  .form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-  }
-  .form-grid label{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    font-size:12px;
-    color:var(--text-dim);
-  }
+  .modal h2{ font-family:'Space Grotesk', sans-serif; margin:0 0 18px; font-size:22px; }
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .form-grid label{ display:flex; flex-direction:column; gap:5px; font-size:12px; color:var(--text-dim); }
   .form-grid label.full{ grid-column:1/-1; }
-  .modal-actions{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    margin-top:20px;
-  }
-  @media (max-width:640px){
-    .stats{ grid-template-columns:repeat(2,1fr); }
-    .form-grid{ grid-template-columns:1fr; }
-    h1{ font-size:32px; }
-  }
+  .modal-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
+  @media (max-width:640px){ .form-grid{ grid-template-columns:1fr; } h1{ font-size:32px; } }
   .videos-modal{ max-width:600px; }
-  .videos-modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:14px;
-  }
-  .videos-modal-head h2{ margin:0; }
-  .videos-sub{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    color:var(--gold);
-    margin-top:4px;
-  }
-  .videos-summary{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-bottom:18px;
-  }
-  .videos-summary .vs-box{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:10px 12px;
-    text-align:center;
-  }
-  .videos-summary .vs-num{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:20px;
-    font-weight:700;
-    color:var(--gold);
-  }
-  .videos-summary .vs-lbl{
-    font-size:11px;
-    color:var(--text-dim);
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    margin-top:2px;
-  }
-  .video-form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    align-items:end;
-    margin-bottom:18px;
-    padding-bottom:18px;
-    border-bottom:1px solid var(--line);
-  }
+  .videos-modal-head{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+  .videos-sub{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--gold); margin-top:4px; }
+  .videos-summary{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; }
+  .videos-summary .vs-box{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 12px; text-align:center; }
+  .videos-summary .vs-num{ font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:700; color:var(--gold); }
+  .videos-summary .vs-lbl{ font-size:11px; color:var(--text-dim); text-transform:uppercase; margin-top:2px; }
+  .video-form{ display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:end; margin-bottom:18px; padding-bottom:18px; border-bottom:1px solid var(--line); }
   .video-form button{ grid-column:1/-1; }
   .video-form label.full{ grid-column:1/-1; }
-  .video-form label{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    font-size:12px;
-    color:var(--text-dim);
-  }
-  .video-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    max-height:320px;
-    overflow-y:auto;
-  }
-  .video-item{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:12px 14px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-  }
+  .video-form label{ display:flex; flex-direction:column; gap:5px; font-size:12px; color:var(--text-dim); }
+  .video-list{ display:flex; flex-direction:column; gap:10px; max-height:320px; overflow-y:auto; }
+  .video-item{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
   .video-item .vi-details{ font-size:13px; }
-  .video-item .vi-details .row{
-    display:flex;
-    gap:14px;
-    margin-bottom:3px;
-    flex-wrap:wrap;
-  }
-  .video-item .vi-details .row:last-child{ margin-bottom:0; }
+  .video-item .vi-details .row{ display:flex; gap:14px; margin-bottom:3px; flex-wrap:wrap; }
   .video-item .vi-details .k{ color:var(--text-dim); }
   .video-item .status-pending{ color:var(--amber); }
   .video-item .status-done{ color:var(--green); }
-  .video-empty{
-    text-align:center;
-    padding:30px;
-    color:var(--text-dim);
-    font-size:13px;
-  }
-  .loading{
-    text-align:center;
-    padding:40px;
-    color:var(--text-dim);
-  }
+  .video-empty{ text-align:center; padding:30px; color:var(--text-dim); font-size:13px; }
+  .loading{ text-align:center; padding:40px; color:var(--text-dim); }
 </style>
 </head>
 <body>
 
-<!-- Login Screen -->
 <div id="loginScreen" style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;">
   <div style="width:100%; max-width:360px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:32px 28px;">
     <div style="text-align:center; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:28px; letter-spacing:1px; background:linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--purple-soft)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:22px;">GHANI STUDIOZ</div>
@@ -460,25 +338,17 @@
   </div>
 </div>
 
-<!-- Main App Content -->
 <div id="appContent" style="display:none;">
-
 <div class="brand-title">GHANI STUDIOZ</div>
 <div class="sprocket-bar" id="sprocketBar"></div>
-
 <header style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
-  <div>
-    <div class="eyebrow">Private Client Dashboard</div>
-    <h1>Client <span>Details</span></h1>
-  </div>
+  <div><div class="eyebrow">Private Client Dashboard</div><h1>Client <span>Details</span></h1></div>
   <button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button>
 </header>
-
 <div class="stats">
   <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl">Total Clients</div></div>
   <div class="stat"><div class="num" id="statActive">0</div><div class="lbl">Active</div></div>
 </div>
-
 <main>
   <div class="toolbar">
     <input id="searchBox" type="text" placeholder="Search by name, social media name, service...">
@@ -491,7 +361,6 @@
     </select>
     <button class="btn btn-primary" id="addBtn">+ Add Client</button>
   </div>
-
   <div id="loadingState" class="loading">Loading clients...</div>
   <div class="grid" id="clientGrid"></div>
   <div class="empty" id="emptyState" style="display:none;">
@@ -503,22 +372,12 @@
 <div class="overlay" id="overlay">
   <div class="modal">
     <h2 id="modalTitle">Add Client</h2>
-    <div class="form-grid" id="formGrid">
-      <label>Client ID
-        <input id="f_id" type="text" placeholder="e.g. 002">
-      </label>
-      <label>Name *
-        <input id="f_name" type="text" placeholder="Client name" required>
-      </label>
-      <label>Contact Number
-        <input id="f_contact" type="text" placeholder="+92 3xx xxxxxxx">
-      </label>
-      <label>Drive Email
-        <input id="f_email" type="email" placeholder="name@example.com">
-      </label>
-      <label>Social Media Name
-        <input id="f_tiktok" type="text" placeholder="@handle">
-      </label>
+    <div class="form-grid">
+      <label>Client ID <input id="f_id" type="text" placeholder="e.g. 002"></label>
+      <label>Name * <input id="f_name" type="text" placeholder="Client name"></label>
+      <label>Contact Number <input id="f_contact" type="text" placeholder="+92 3xx xxxxxxx"></label>
+      <label>Drive Email <input id="f_email" type="email" placeholder="name@example.com"></label>
+      <label>Social Media Name <input id="f_tiktok" type="text" placeholder="@handle"></label>
       <label>Services
         <select id="f_services">
           <option>videos editing</option>
@@ -528,21 +387,11 @@
           <option>social media management</option>
         </select>
       </label>
-      <label>Approach
-        <input id="f_approach" type="text" placeholder="e.g. tiktok id ghani.phatan">
-      </label>
-      <label>Edits Type
-        <input id="f_edits" type="text" placeholder="e.g. informative">
-      </label>
-      <label>Hiring Date
-        <input id="f_hiring" type="date">
-      </label>
-      <label>Manager Name
-        <input id="f_manager" type="text" placeholder="Manager name">
-      </label>
-      <label>Manager Contact
-        <input id="f_managercontact" type="text" placeholder="+92 3xx xxxxxxx">
-      </label>
+      <label>Approach <input id="f_approach" type="text" placeholder="e.g. tiktok id ghani.phatan"></label>
+      <label>Edits Type <input id="f_edits" type="text" placeholder="e.g. informative"></label>
+      <label>Hiring Date <input id="f_hiring" type="date"></label>
+      <label>Manager Name <input id="f_manager" type="text" placeholder="Manager name"></label>
+      <label>Manager Contact <input id="f_managercontact" type="text" placeholder="+92 3xx xxxxxxx"></label>
       <label>Status
         <select id="f_status">
           <option>Active</option>
@@ -551,15 +400,9 @@
           <option>Cancelled</option>
         </select>
       </label>
-      <label>Fee per Video (PKR)
-        <input id="f_fee" type="number" placeholder="0" min="0">
-      </label>
-      <label>Follow-up Date
-        <input id="f_followup" type="date">
-      </label>
-      <label class="full">Notes
-        <textarea id="f_notes" rows="2" placeholder="Anything worth remembering"></textarea>
-      </label>
+      <label>Fee per Video (PKR) <input id="f_fee" type="number" placeholder="0" min="0"></label>
+      <label>Follow-up Date <input id="f_followup" type="date"></label>
+      <label class="full">Notes <textarea id="f_notes" rows="2" placeholder="Anything worth remembering"></textarea></label>
     </div>
     <div class="modal-actions">
       <button class="btn btn-ghost" id="cancelBtn" type="button">Cancel</button>
@@ -571,32 +414,17 @@
 <div class="overlay" id="videosOverlay">
   <div class="modal videos-modal">
     <div class="videos-modal-head">
-      <div>
-        <h2 id="videosModalTitle">Videos</h2>
-        <div class="videos-sub" id="videosModalSub"></div>
-      </div>
+      <div><h2 id="videosModalTitle">Videos</h2><div class="videos-sub" id="videosModalSub"></div></div>
       <button class="btn btn-ghost btn-small" id="videosCloseBtn" type="button">Close</button>
     </div>
     <div class="videos-summary" id="videosSummary"></div>
     <div class="video-form">
-      <label class="full">Video Name (base name)
-        <input id="v_name" type="text" placeholder="e.g. Ghani Vlog">
-      </label>
-      <label>Date Received
-        <input id="v_received" type="date">
-      </label>
-      <label>Fee per Video (PKR)
-        <input id="v_price" type="number" placeholder="e.g. 700" min="0">
-      </label>
-      <label>How Many Videos
-        <input id="v_count" type="number" placeholder="e.g. 10" min="1" value="1">
-      </label>
-      <label>Videos Edited Already
-        <input id="v_editedcount" type="number" placeholder="0" min="0" value="0">
-      </label>
-      <label>Completion Date (if done)
-        <input id="v_edited" type="date">
-      </label>
+      <label class="full">Video Name <input id="v_name" type="text" placeholder="e.g. Ghani Vlog"></label>
+      <label>Date Received <input id="v_received" type="date"></label>
+      <label>Fee per Video (PKR) <input id="v_price" type="number" placeholder="e.g. 700" min="0"></label>
+      <label>How Many Videos <input id="v_count" type="number" min="1" value="1"></label>
+      <label>Videos Edited Already <input id="v_editedcount" type="number" min="0" value="0"></label>
+      <label>Completion Date <input id="v_edited" type="date"></label>
       <button class="btn btn-primary" id="addVideoBtn" type="button">+ Add Video(s)</button>
     </div>
     <div class="video-list" id="videoList"></div>
@@ -608,7 +436,7 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, browserSessionPersistence, setPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSHT3lc",
@@ -624,6 +452,9 @@
   const db = getFirestore(app);
   const auth = getAuth(app);
   const clientsCollection = collection(db, "clients");
+
+  // Browser band hote hi logout ke liye session persistence
+  setPersistence(auth, browserSessionPersistence).catch(console.error);
 
   const loginScreen = document.getElementById('loginScreen');
   const appContent = document.getElementById('appContent');
@@ -662,18 +493,6 @@
     signOut(auth).catch(console.error);
   });
 
-  onAuthStateChanged(auth, (user) => {
-    if(user){
-      loginScreen.style.display = 'none';
-      appContent.style.display = 'block';
-      startClientsListener();
-    } else {
-      loginScreen.style.display = 'flex';
-      appContent.style.display = 'none';
-      if(unsubscribeClients){ unsubscribeClients(); unsubscribeClients = null; }
-    }
-  });
-
   let clients = [];
   let editingId = null;
   let videosClientId = null;
@@ -710,7 +529,6 @@
         const data = doc.data();
         if(data && data.uid) clients.push(data);
       });
-      // FIXED: Numeric sort
       clients.sort((a, b) => {
         const na = parseInt(a.id, 10);
         const nb = parseInt(b.id, 10);
@@ -737,9 +555,7 @@
   function render(){
     const q = document.getElementById('searchBox').value.trim().toLowerCase();
     const filterStatus = document.getElementById('filterStatus').value;
-
     const filtered = clients.filter(c=>{
-      // FIXED: undefined safe
       const searchText = [c.name, c.tiktok, c.services, c.approach, c.manager, c.id].map(x=>x||'').join(' ').toLowerCase();
       const matchesQ = !q || searchText.includes(q);
       const matchesStatus = !filterStatus || c.status === filterStatus;
@@ -748,9 +564,6 @@
 
     grid.innerHTML = '';
     emptyState.style.display = filtered.length ? 'none' : 'block';
-    if(!filtered.length && clients.length===0){
-        // keep empty state
-    }
 
     const addTile = document.createElement('div');
     addTile.className = 'card add-tile';
@@ -791,24 +604,14 @@
     });
 
     document.querySelectorAll('.edit-btn-trigger').forEach(b=>{
-      b.onclick = (e) => {
-        e.preventDefault();
-        openModal(b.getAttribute('data-edit'));
-      };
+      b.onclick = (e) => { e.preventDefault(); openModal(b.getAttribute('data-edit')); };
     });
     document.querySelectorAll('[data-del]').forEach(b=>{
-      b.onclick = (e) => {
-        e.preventDefault();
-        deleteClient(b.getAttribute('data-del'));
-      };
+      b.onclick = (e) => { e.preventDefault(); deleteClient(b.getAttribute('data-del')); };
     });
     document.querySelectorAll('[data-videos]').forEach(b=>{
-      b.onclick = (e) => {
-        e.preventDefault();
-        openVideosModal(b.getAttribute('data-videos'));
-      };
+      b.onclick = (e) => { e.preventDefault(); openVideosModal(b.getAttribute('data-videos')); };
     });
-
     updateStats();
   }
 
@@ -829,7 +632,6 @@
     editingId = uid || null;
     document.getElementById('modalTitle').textContent = uid ? 'Edit Client' : 'Add Client';
     const c = uid ? clients.find(x=>x.uid===uid) : null;
-
     document.getElementById('f_id').value = c ? c.id : nextId();
     document.getElementById('f_name').value = c ? c.name : '';
     document.getElementById('f_contact').value = c ? c.contact : '';
@@ -845,7 +647,6 @@
     document.getElementById('f_status').value = c ? c.status : 'Active';
     document.getElementById('f_followup').value = c ? (c.followup && c.followup.includes('/') ? '' : c.followup) : '';
     document.getElementById('f_notes').value = c ? c.notes : '';
-
     overlay.classList.add('show');
   }
 
@@ -867,7 +668,7 @@
       await deleteDoc(doc(db, "clients", uid));
     } catch(e) {
       alert("Delete failed. Check Firestore Rules.");
-      console.error("Error deleting document: ", e);
+      console.error(e);
     }
   }
 
@@ -878,22 +679,17 @@
 
   document.getElementById('saveBtn').addEventListener('click', async ()=>{
     if(isSaving) return;
-    
     const name = document.getElementById('f_name').value.trim();
     if(!name){ alert('Name is required'); return; }
-
     const saveBtn = document.getElementById('saveBtn');
     isSaving = true;
     saveBtn.disabled = true;
     saveBtn.textContent = 'Saving...';
-
-    // FIXED: UID ek bar banao, duplicate rokho
     if(!editingId && !pendingUid){
       pendingUid = 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
     }
     const uid = editingId ? editingId : pendingUid;
     const existingClient = editingId ? clients.find(c => c.uid === editingId) : null;
-
     const data = {
       uid: uid,
       id: document.getElementById('f_id').value.trim() || nextId(),
@@ -913,12 +709,10 @@
       notes: document.getElementById('f_notes').value.trim(),
       videos: existingClient ? (existingClient.videos || []) : []
     };
-
     try {
       await setDoc(doc(db, "clients", uid), data, { merge: true });
       pendingUid = null;
       closeModal();
-      // render() onSnapshot se auto hoga, manual call ki zaroorat nahi
     } catch(e) {
       alert("Database error saving client. Rules check karo.");
       console.error(e);
@@ -932,14 +726,11 @@
   document.getElementById('searchBox').addEventListener('input', render);
   document.getElementById('filterStatus').addEventListener('change', render);
 
-  /* ---------- Videos tracker ---------- */
   const videosOverlay = document.getElementById('videosOverlay');
-
   function openVideosModal(uid){
     videosClientId = uid;
     const c = clients.find(x=>x.uid===uid);
     if(!c) return;
-    
     document.getElementById('videosModalTitle').textContent = `${c.name}'s Videos`;
     document.getElementById('videosModalSub').textContent = `#${c.id} · ${c.services || ''}`;
     document.getElementById('v_name').value = '';
@@ -948,40 +739,31 @@
     document.getElementById('v_editedcount').value = '0';
     document.getElementById('v_edited').value = '';
     document.getElementById('v_price').value = c.fee || '';
-
     renderVideoList();
     videosOverlay.classList.add('show');
   }
-
   function closeVideosModal(){
     videosOverlay.classList.remove('show');
     videosClientId = null;
   }
-
   function renderVideoList(){
     const c = clients.find(x=>x.uid===videosClientId);
     if(!c) return;
     const batches = c.videos || [];
-
     const totalVideos = batches.reduce((s,b)=>s+Number(b.count||0),0);
     const totalEdited = batches.reduce((s,b)=>s+Math.min(Number(b.editedCount||0), Number(b.count||0)),0);
     const totalPrice = batches.reduce((s,b)=>s+Number(b.count||0)*Number(b.price||0),0);
-
     document.getElementById('videosSummary').innerHTML = `
       <div class="vs-box"><div class="vs-num">${totalVideos}</div><div class="vs-lbl">Total Videos</div></div>
       <div class="vs-box"><div class="vs-num">${totalEdited}</div><div class="vs-lbl">Edited</div></div>
       <div class="vs-box"><div class="vs-num">PKR ${totalPrice.toLocaleString()}</div><div class="vs-lbl">Total Value</div></div>
     `;
-
     const list = document.getElementById('videoList');
     if(!batches.length){
       list.innerHTML = `<div class="video-empty">No batches logged yet. Add the first one above.</div>`;
       return;
     }
-
-    // FIXED: delete bug - original index preserve karo
     const sorted = batches.map((b,i)=>({...b, _idx:i})).slice().reverse();
-
     list.innerHTML = sorted.map(b=>{
       const count = Number(b.count||0);
       const editedCount = Math.min(Number(b.editedCount||0), count);
@@ -1006,13 +788,11 @@
         <button class="btn btn-danger btn-small" data-delvideo="${b._idx}">Delete</button>
       </div>
     `;}).join('');
-
     list.querySelectorAll('[data-delvideo]').forEach(b=>{
       b.onclick = async (e)=>{
         e.preventDefault();
         const idx = Number(b.getAttribute('data-delvideo'));
         if(!confirm('Delete this batch?')) return;
-        // FIXED: filter method, splice bug khatam
         c.videos = c.videos.filter((_, i) => i !== idx);
         try {
           await setDoc(doc(db, "clients", c.uid), c, { merge: true });
@@ -1024,7 +804,6 @@
       };
     });
   }
-
   document.getElementById('addVideoBtn').addEventListener('click', async ()=>{
     const c = clients.find(x=>x.uid===videosClientId);
     if(!c) return;
@@ -1034,33 +813,70 @@
     const price = document.getElementById('v_price').value;
     const editedCount = document.getElementById('v_editedcount').value || 0;
     const edited = document.getElementById('v_edited').value.trim();
-
     if(!received){ alert('Please enter the date the batch was received'); return; }
     if(!count || Number(count) < 1){ alert('Please enter how many videos are in this batch'); return; }
-
     if(!c.videos) c.videos = [];
     c.videos.push({ name: vname, received, count, price: price||c.fee||0, editedCount, edited });
-
     try {
       await setDoc(doc(db, "clients", c.uid), c, { merge: true });
-      
       document.getElementById('v_name').value = '';
       document.getElementById('v_received').value = '';
       document.getElementById('v_count').value = '1';
       document.getElementById('v_editedcount').value = '0';
       document.getElementById('v_edited').value = '';
       document.getElementById('v_price').value = c.fee || '';
-
       renderVideoList();
     } catch(e) {
       alert("Error saving video batch.");
       console.error(e);
     }
   });
-
   document.getElementById('videosCloseBtn').addEventListener('click', closeVideosModal);
   videosOverlay.addEventListener('click', (e)=>{ if(e.target === videosOverlay) closeVideosModal(); });
-</script>
 
+  /* ---------- AUTO LOGOUT SYSTEM ---------- */
+  let inactivityTimer = null;
+  const INACTIVITY_LIMIT = 15 * 60 * 1000; // 15 minutes
+
+  function resetInactivityTimer(){
+    clearTimeout(inactivityTimer);
+    if(auth.currentUser){
+      inactivityTimer = setTimeout(async () => {
+        alert('15 minute se inactive thay, security ke liye auto logout kar diya gaya.');
+        try { await signOut(auth); } catch(e){ console.error(e); }
+      }, INACTIVITY_LIMIT);
+    }
+  }
+
+  function startInactivityWatcher(){
+    const events = ['mousemove','mousedown','keydown','click','scroll','touchstart'];
+    events.forEach(evt => window.addEventListener(evt, resetInactivityTimer, { passive: true }));
+    resetInactivityTimer();
+  }
+
+  function stopInactivityWatcher(){
+    clearTimeout(inactivityTimer);
+    const events = ['mousemove','mousedown','keydown','click','scroll','touchstart'];
+    events.forEach(evt => window.removeEventListener(evt, resetInactivityTimer));
+  }
+
+  let authWatcherInitialized = false;
+  const originalOnAuth = onAuthStateChanged;
+  // main auth listener for app + auto logout
+  onAuthStateChanged(auth, (user) => {
+    if(user){
+      loginScreen.style.display = 'none';
+      appContent.style.display = 'block';
+      startClientsListener();
+      startInactivityWatcher();
+    } else {
+      loginScreen.style.display = 'flex';
+      appContent.style.display = 'none';
+      stopInactivityWatcher();
+      if(unsubscribeClients){ unsubscribeClients(); unsubscribeClients = null; }
+    }
+  });
+
+</script>
 </body>
 </html>
