@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ghani Studioz — Client Details</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #16101f;
+    --bg-2: #1f1730;
+    --card: #241a38;
+    --card-hover: #2c2145;
+    --gold: #e8a749;
+    --gold-soft: #f4c884;
+    --purple: #8a4fc9;
+    --purple-soft: #a875e0;
+    --text: #f2ecf9;
+    --text-dim: #a89bc0;
+    --line: #382a52;
+    --green: #4ade80;
+    --red: #f27272;
+    --amber: #e8a749;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #2a1f47 0%, transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, #3a2358 0%, transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    min-height:100vh;
+  }
+
+  .brand-title{
+    text-align:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:56px;
+    letter-spacing:2px;
+    padding:22px 20px 6px;
+    background:linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--purple-soft));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  @media (max-width:640px){
+    .brand-title{ font-size:34px; }
+  }
+
+  /* film sprocket strip */
+  .sprocket-bar{
+    height:22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:0 24px;
+    background:#0f0a18;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .sprocket-bar .hole{
+    width:10px; height:10px; border-radius:2px;
+    background:var(--gold);
+    opacity:0.55;
+    flex:none;
+  }
+
+  header{
+    padding:36px 32px 22px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:3px;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:44px;
+    font-weight:700;
+    margin:0 0 6px;
+    letter-spacing:-0.5px;
+  }
+  h1 span{ color:var(--gold); }
+  .sub{
+    color:var(--text-dim);
+    font-size:15px;
+    max-width:520px;
+  }
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    max-width:1180px;
+    margin:22px auto 0;
+    padding:0 32px;
+  }
+  .stat{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .stat .num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:28px;
+    font-weight:700;
+  }
+  .stat .lbl{
+    font-size:12px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-top:2px;
+  }
+
+  main{
+    max-width:1180px;
+    margin:0 auto;
+    padding:28px 32px 80px;
+  }
+
+  .toolbar{
+    display:flex;
+    gap:12px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  input, select, textarea{
+    font-family:'Inter', sans-serif;
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    color:var(--text);
+    border-radius:8px;
+    padding:10px 13px;
+    font-size:14px;
+    outline:none;
+  }
+  input:focus, select:focus, textarea:focus{
+    border-color:var(--purple-soft);
+    box-shadow:0 0 0 3px rgba(138,79,201,0.25);
+  }
+  #searchBox{ flex:1; min-width:180px; }
+  #filterStatus{ min-width:140px; }
+
+  .btn{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn:focus-visible{ outline:2px solid var(--gold-soft); outline-offset:2px; }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold), #d98f2e);
+    color:#1a1206;
+    box-shadow:0 4px 14px rgba(232,167,73,0.25);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--text-dim);
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{ color:var(--text); border-color:var(--purple-soft); }
+  .btn-danger{
+    background:transparent;
+    color:var(--red);
+    border:1px solid rgba(242,114,114,0.35);
+  }
+  .btn-small{ padding:6px 12px; font-size:12px; }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:16px;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px;
+    position:relative;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{ border-color:var(--purple-soft); }
+
+  .add-tile{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:2px dashed var(--line);
+    background:transparent;
+    cursor:pointer;
+    min-height:180px;
+  }
+  .add-tile:hover{
+    border-color:var(--gold);
+    background:rgba(232,167,73,0.06);
+  }
+  .add-tile .plus-icon{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:38px;
+    font-weight:700;
+    color:var(--gold);
+    line-height:1;
+  }
+  .add-tile .add-label{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:14px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:10px;
+  }
+  .cid{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--gold);
+    letter-spacing:1px;
+  }
+  .cname{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px;
+    font-weight:700;
+    margin:2px 0 0;
+  }
+  .tag{
+    display:inline-block;
+    font-size:11px;
+    font-weight:600;
+    padding:3px 9px;
+    border-radius:20px;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+  }
+  .tag-active{ background:rgba(74,222,128,0.15); color:var(--green); }
+  .tag-completed{ background:rgba(138,79,201,0.2); color:var(--purple-soft); }
+  .tag-hold{ background:rgba(232,167,73,0.18); color:var(--gold-soft); }
+  .tag-cancelled{ background:rgba(242,114,114,0.15); color:var(--red); }
+
+  .pay-paid{ color:var(--green); }
+  .pay-unpaid{ color:var(--red); }
+  .pay-partial, .pay-advance{ color:var(--gold-soft); }
+
+  .field-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    padding:5px 0;
+    border-bottom:1px dashed rgba(255,255,255,0.06);
+  }
+  .field-row:last-of-type{ border-bottom:none; }
+  .field-row .k{ color:var(--text-dim); }
+  .field-row .v{ font-weight:500; text-align:right; }
+
+  .card-actions{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+  }
+
+  .videos-btn{
+    width:100%;
+    margin-top:12px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    background:rgba(138,79,201,0.12);
+    border:1px solid var(--purple-soft);
+    color:var(--purple-soft);
+    border-radius:8px;
+    padding:9px 12px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:background .15s ease;
+  }
+  .videos-btn:hover{ background:rgba(138,79,201,0.22); }
+  .videos-btn .vcount{
+    background:var(--purple-soft);
+    color:#1a1029;
+    font-size:11px;
+    font-weight:700;
+    padding:1px 8px;
+    border-radius:20px;
+  }
+
+  .empty{
+    text-align:center;
+    padding:70px 20px;
+    color:var(--text-dim);
+    border:1px dashed var(--line);
+    border-radius:12px;
+  }
+  .empty .big{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:20px;
+    color:var(--text);
+    margin-bottom:8px;
+  }
+
+  /* modal */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(10,6,16,0.7);
+    backdrop-filter:blur(3px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+    padding:20px;
+  }
+  .overlay.show{ display:flex; }
+  .modal{
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    width:100%;
+    max-width:640px;
+    max-height:88vh;
+    overflow-y:auto;
+    padding:26px;
+  }
+  .modal h2{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0 0 18px;
+    font-size:22px;
+  }
+  .form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .form-grid label{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+  .form-grid label.full{ grid-column:1/-1; }
+  .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+  }
+
+  @media (max-width:640px){
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .form-grid{ grid-template-columns:1fr; }
+    h1{ font-size:32px; }
+  }
+
+  /* videos modal */
+  .videos-modal{ max-width:600px; }
+  .videos-modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:14px;
+  }
+  .videos-modal-head h2{ margin:0; }
+  .videos-sub{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    margin-top:4px;
+  }
+
+  .videos-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .videos-summary .vs-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 12px;
+    text-align:center;
+  }
+  .videos-summary .vs-num{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:var(--gold);
+  }
+  .videos-summary .vs-lbl{
+    font-size:11px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-top:2px;
+  }
+
+  .video-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    align-items:end;
+    margin-bottom:18px;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+  }
+  .video-form button{ grid-column:1/-1; }
+  .video-form label.full{ grid-column:1/-1; }
+  .video-form label{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+
+  .video-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-height:320px;
+    overflow-y:auto;
+  }
+  .video-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:12px 14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+  }
+  .video-item .vi-details{ font-size:13px; }
+  .video-item .vi-details .row{
+    display:flex;
+    gap:14px;
+    margin-bottom:3px;
+  }
+  .video-item .vi-details .row:last-child{ margin-bottom:0; }
+  .video-item .vi-details .k{ color:var(--text-dim); }
+  .video-item .status-pending{ color:var(--amber); }
+  .video-item .status-done{ color:var(--green); }
+  .video-empty{
+    text-align:center;
+    padding:30px;
+    color:var(--text-dim);
+    font-size:13px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Login Screen -->
+<div id="loginScreen" style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;">
+  <div style="width:100%; max-width:360px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:32px 28px;">
+    <div style="text-align:center; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:28px; letter-spacing:1px; background:linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--purple-soft)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:22px;">GHANI STUDIOZ</div>
+    <label style="display:block; margin-bottom:14px; font-size:13px; color:var(--text-dim);">Email
+      <input id="loginEmail" type="email" placeholder="you@example.com" style="width:100%; margin-top:6px;">
+    </label>
+    <label style="display:block; margin-bottom:18px; font-size:13px; color:var(--text-dim);">Password
+      <input id="loginPassword" type="password" placeholder="••••••••" style="width:100%; margin-top:6px;">
+    </label>
+    <button class="btn btn-primary" id="loginBtn" style="width:100%;">Log In</button>
+    <div id="loginError" style="color:var(--red); font-size:13px; margin-top:12px; text-align:center; display:none;"></div>
+  </div>
+</div>
+
+<!-- Main App Content (hidden until logged in) -->
+<div id="appContent" style="display:none;">
+
+<div class="brand-title">GHANI STUDIOZ</div>
+<div class="sprocket-bar" id="sprocketBar"></div>
+
+<header style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
+  <h1>Client <span>Details</span></h1>
+  <button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl">Total Clients</div></div>
+  <div class="stat"><div class="num" id="statActive">0</div><div class="lbl">Active</div></div>
+</div>
+
+<main>
+  <div class="toolbar">
+    <input id="searchBox" type="text" placeholder="Search by name, social media name, service...">
+    <select id="filterStatus">
+      <option value="">All statuses</option>
+      <option value="Active">Active</option>
+      <option value="Completed">Completed</option>
+      <option value="On Hold">On Hold</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
+    <button class="btn btn-primary" id="addBtn">+ Add Client</button>
+  </div>
+
+  <div class="grid" id="clientGrid"></div>
+  <div class="empty" id="emptyState" style="display:none;">
+    <div class="big">No clients yet</div>
+    <div>Tap "+ Add Client" to log your first one.</div>
+  </div>
+</main>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h2 id="modalTitle">Add Client</h2>
+    <div class="form-grid" id="formGrid">
+      <label>Client ID
+        <input id="f_id" type="text" placeholder="e.g. 002">
+      </label>
+      <label>Name
+        <input id="f_name" type="text" placeholder="Client name">
+      </label>
+      <label>Contact Number
+        <input id="f_contact" type="text" placeholder="+92 3xx xxxxxxx">
+      </label>
+      <label>Drive Email
+        <input id="f_email" type="email" placeholder="name@example.com">
+      </label>
+      <label>Social Media Name
+        <input id="f_tiktok" type="text" placeholder="@handle">
+      </label>
+      <label>Services
+        <select id="f_services">
+          <option>videos editing</option>
+          <option>photo editing</option>
+          <option>thumbnail design</option>
+          <option>content writing</option>
+          <option>social media management</option>
+        </select>
+      </label>
+      <label>Approach
+        <input id="f_approach" type="text" placeholder="e.g. tiktok id ghani.phatan">
+      </label>
+      <label>Edits Type
+        <input id="f_edits" type="text" placeholder="e.g. informative">
+      </label>
+      <label>Hiring Date
+        <input id="f_hiring" type="text" placeholder="dd/mm/yyyy">
+      </label>
+      <label>Manager Name
+        <input id="f_manager" type="text" placeholder="Manager name">
+      </label>
+      <label>Manager Contact
+        <input id="f_managercontact" type="text" placeholder="+92 3xx xxxxxxx">
+      </label>
+      <label>Status
+        <select id="f_status">
+          <option>Active</option>
+          <option>Completed</option>
+          <option>On Hold</option>
+          <option>Cancelled</option>
+        </select>
+      </label>
+      <label>Fee per Video (PKR)
+        <input id="f_fee" type="number" placeholder="0">
+      </label>
+      <label>Follow-up Date
+        <input id="f_followup" type="text" placeholder="dd/mm/yyyy">
+      </label>
+      <label class="full">Notes
+        <textarea id="f_notes" rows="2" placeholder="Anything worth remembering"></textarea>
+      </label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancelBtn">Cancel</button>
+      <button class="btn btn-primary" id="saveBtn">Save Client</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="videosOverlay">
+  <div class="modal videos-modal">
+    <div class="videos-modal-head">
+      <div>
+        <h2 id="videosModalTitle">Videos</h2>
+        <div class="videos-sub" id="videosModalSub"></div>
+      </div>
+      <button class="btn btn-ghost btn-small" id="videosCloseBtn">Close</button>
+    </div>
+
+    <div class="videos-summary" id="videosSummary"></div>
+
+    <div class="video-form">
+      <label class="full">Video Name (base name)
+        <input id="v_name" type="text" placeholder="e.g. Ghani Vlog">
+      </label>
+      <label>Date Received
+        <input id="v_received" type="text" placeholder="dd/mm/yyyy">
+      </label>
+      <label>Fee per Video (PKR)
+        <input id="v_price" type="number" placeholder="e.g. 700">
+      </label>
+      <label>How Many Videos
+        <input id="v_count" type="number" placeholder="e.g. 10" min="1" value="1">
+      </label>
+      <label>Videos Edited Already
+        <input id="v_editedcount" type="number" placeholder="0" value="0">
+      </label>
+      <label>Completion Date (if done)
+        <input id="v_edited" type="text" placeholder="dd/mm/yyyy">
+      </label>
+      <button class="btn btn-primary" id="addVideoBtn">+ Add Video(s)</button>
+    </div>
+
+    <div class="video-list" id="videoList"></div>
+  </div>
+</div>
+
+</div>
+<!-- /appContent -->
+
+<!-- Firebase SDK Scripts Modules Insertion -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+  // Ghani Studioz Authenticated Project Config Details
+  const firebaseConfig = {
+    apiKey: "AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSHT3lc",
+    authDomain: "ghani-studioz.firebaseapp.com",
+    projectId: "ghani-studioz",
+    storageBucket: "ghani-studioz.firebasestorage.app",
+    messagingSenderId: "651062801971",
+    appId: "1:651062801971:web:5b34cba89803e0617b9546",
+    measurementId: "G-FNEY2YG9JZ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  const clientsCollection = collection(db, "clients");
+
+  /* ---------- Login / Auth ---------- */
+  const loginScreen = document.getElementById('loginScreen');
+  const appContent = document.getElementById('appContent');
+  const loginError = document.getElementById('loginError');
+  let unsubscribeClients = null;
+
+  document.getElementById('loginBtn').addEventListener('click', doLogin);
+  document.getElementById('loginPassword').addEventListener('keydown', (e)=>{ if(e.key === 'Enter') doLogin(); });
+
+  async function doLogin(){
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    loginError.style.display = 'none';
+    if(!email || !password){
+      loginError.textContent = 'Email aur password dono likhein.';
+      loginError.style.display = 'block';
+      return;
+    }
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch(e){
+      loginError.textContent = 'Login fail ho gaya. Email/password check karein.';
+      loginError.style.display = 'block';
+      console.error(e);
+    }
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', ()=>{
+    signOut(auth);
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    if(user){
+      loginScreen.style.display = 'none';
+      appContent.style.display = 'block';
+      startClientsListener();
+    } else {
+      loginScreen.style.display = 'flex';
+      appContent.style.display = 'none';
+      if(unsubscribeClients){ unsubscribeClients(); unsubscribeClients = null; }
+    }
+  });
+
+  let clients = [];
+  let editingId = null;
+  let videosClientId = null;
+
+  const grid = document.getElementById('clientGrid');
+  const emptyState = document.getElementById('emptyState');
+  const overlay = document.getElementById('overlay');
+
+  function buildSprockets(){
+    const bar = document.getElementById('sprocketBar');
+    const count = Math.ceil(window.innerWidth / 30);
+    bar.innerHTML = '';
+    for(let i=0;i<count;i++){
+      const d = document.createElement('div');
+      d.className = 'hole';
+      bar.appendChild(d);
+    }
+  }
+  buildSprockets();
+  window.addEventListener('resize', buildSprockets);
+
+  // Firestore Realtime Database Listener Integration
+  function startClientsListener(){
+    if(unsubscribeClients) return; // already listening
+    unsubscribeClients = onSnapshot(clientsCollection, (snapshot) => {
+      clients = [];
+      snapshot.forEach((doc) => {
+        clients.push(doc.data());
+      });
+      // Sorting to keep consistency
+      clients.sort((a, b) => b.id.localeCompare(a.id));
+      render();
+    }, (error) => {
+      console.error("Firestore loading error: ", error);
+    });
+  }
+
+  function statusTagClass(status){
+    return {
+      'Active':'tag-active',
+      'Completed':'tag-completed',
+      'On Hold':'tag-hold',
+      'Cancelled':'tag-cancelled'
+    }[status] || 'tag-active';
+  }
+
+  function render(){
+    const q = document.getElementById('searchBox').value.trim().toLowerCase();
+    const filterStatus = document.getElementById('filterStatus').value;
+
+    const filtered = clients.filter(c=>{
+      const matchesQ = !q || [c.name,c.tiktok,c.services,c.approach,c.manager]
+        .join(' ').toLowerCase().includes(q);
+      const matchesStatus = !filterStatus || c.status === filterStatus;
+      return matchesQ && matchesStatus;
+    });
+
+    grid.innerHTML = '';
+    emptyState.style.display = filtered.length ? 'none' : 'block';
+
+    const addTile = document.createElement('div');
+    addTile.className = 'card add-tile';
+    addTile.innerHTML = `<div class="plus-icon">+</div><div class="add-label">New Client</div>`;
+    addTile.addEventListener('click', ()=>openModal(null));
+    grid.appendChild(addTile);
+
+    filtered.forEach(c=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-top">
+          <div>
+            <div class="cid">#${c.id}</div>
+            <div class="cname">${escapeHtml(c.name)}</div>
+          </div>
+          <span class="tag ${statusTagClass(c.status)}">${c.status}</span>
+        </div>
+        <div class="field-row"><span class="k">Contact</span><span class="v">${escapeHtml(c.contact)}</span></div>
+        <div class="field-row"><span class="k">Social Media</span><span class="v">${escapeHtml(c.tiktok)}</span></div>
+        <div class="field-row"><span class="k">Email</span><span class="v">${escapeHtml(c.email)}</span></div>
+        <div class="field-row"><span class="k">Fee per Video</span><span class="v">PKR ${Number(c.fee||0).toLocaleString()}</span></div>
+        <div class="field-row"><span class="k">Services</span><span class="v">${escapeHtml(c.services)}</span></div>
+        <div class="field-row"><span class="k">Edits Type</span><span class="v">${escapeHtml(c.edits)}</span></div>
+        <div class="field-row"><span class="k">Hiring Date</span><span class="v">${escapeHtml(c.hiring)}</span></div>
+        <div class="field-row"><span class="k">Manager</span><span class="v">${escapeHtml(c.manager||'—')}</span></div>
+        <div class="field-row"><span class="k">Follow-up</span><span class="v">${escapeHtml(c.followup||'—')}</span></div>
+        ${c.notes ? `<div class="field-row"><span class="k">Notes</span><span class="v">${escapeHtml(c.notes)}</span></div>` : ''}
+        <button class="videos-btn" data-videos="${c.uid}">
+          🎬 Videos <span class="vcount">${(c.videos||[]).reduce((s,b)=>s+Number(b.count||0),0)}</span>
+        </button>
+        <div class="card-actions">
+          <button class="btn btn-ghost btn-small edit-btn-trigger" data-edit="${c.uid}">Edit</button>
+          <button class="btn btn-danger btn-small" data-del="${c.uid}">Delete</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    document.querySelectorAll('.edit-btn-trigger').forEach(b=>{
+      b.onclick = (e) => {
+        e.preventDefault();
+        openModal(b.getAttribute('data-edit'));
+      };
+    });
+    document.querySelectorAll('[data-del]').forEach(b=>{
+      b.onclick = (e) => {
+        e.preventDefault();
+        deleteClient(b.getAttribute('data-del'));
+      };
+    });
+    document.querySelectorAll('[data-videos]').forEach(b=>{
+      b.onclick = (e) => {
+        e.preventDefault();
+        openVideosModal(b.getAttribute('data-videos'));
+      };
+    });
+
+    updateStats();
+  }
+
+  function escapeHtml(str){
+    if(str === undefined || str === null) return '';
+    return String(str).replace(/[&<>"']/g, m=>({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[m]));
+  }
+
+  function updateStats(){
+    document.getElementById('statTotal').textContent = clients.length;
+    document.getElementById('statActive').textContent = clients.filter(c=>c.status==='Active').length;
+  }
+
+  function openModal(uid){
+    editingId = uid || null;
+    document.getElementById('modalTitle').textContent = uid ? 'Edit Client' : 'Add Client';
+    const c = uid ? clients.find(x=>x.uid===uid) : null;
+
+    document.getElementById('f_id').value = c ? c.id : nextId();
+    document.getElementById('f_name').value = c ? c.name : '';
+    document.getElementById('f_contact').value = c ? c.contact : '';
+    document.getElementById('f_email').value = c ? c.email : '';
+    document.getElementById('f_fee').value = c ? c.fee : '';
+    document.getElementById('f_tiktok').value = c ? c.tiktok : '';
+    document.getElementById('f_services').value = c ? c.services : 'videos editing';
+    document.getElementById('f_approach').value = c ? c.approach : '';
+    document.getElementById('f_edits').value = c ? c.edits : '';
+    document.getElementById('f_hiring').value = c ? c.hiring : '';
+    document.getElementById('f_manager').value = c ? c.manager : '';
+    document.getElementById('f_managercontact').value = c ? c.managercontact : '';
+    document.getElementById('f_status').value = c ? c.status : 'Active';
+    document.getElementById('f_followup').value = c ? c.followup : '';
+    document.getElementById('f_notes').value = c ? c.notes : '';
+
+    overlay.classList.add('show');
+  }
+
+  function nextId(){
+    const nums = clients.map(c=>parseInt(c.id,10)).filter(n=>!isNaN(n));
+    const next = (nums.length ? Math.max(...nums) : 0) + 1;
+    return String(next).padStart(3,'0');
+  }
+
+  function closeModal(){
+    overlay.classList.remove('show');
+    editingId = null;
+  }
+
+  async function deleteClient(uid){
+    if(!confirm('Delete this client?')) return;
+    try {
+      await deleteDoc(doc(db, "clients", uid));
+    } catch(e) {
+      console.error("Error deleting document: ", e);
+    }
+  }
+
+  document.getElementById('addBtn').addEventListener('click', ()=>openModal(null));
+  document.getElementById('cancelBtn').addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
+
+  let isSaving = false; // duplicate prevent karne ke liye
+
+  document.getElementById('saveBtn').addEventListener('click', async ()=>{
+    if(isSaving) return; // agar already saving hai to kuch na karo
+    
+    const name = document.getElementById('f_name').value.trim();
+    if(!name){ alert('Name is required'); return; }
+
+    const saveBtn = document.getElementById('saveBtn');
+    isSaving = true;
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving...';
+
+    const uid = editingId ? editingId : 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+    const existingClient = editingId ? clients.find(c => c.uid === editingId) : null;
+
+    const data = {
+      uid: uid,
+      id: document.getElementById('f_id').value.trim() || nextId(),
+      name,
+      contact: document.getElementById('f_contact').value.trim(),
+      email: document.getElementById('f_email').value.trim(),
+      fee: document.getElementById('f_fee').value,
+      tiktok: document.getElementById('f_tiktok').value.trim(),
+      services: document.getElementById('f_services').value,
+      approach: document.getElementById('f_approach').value.trim(),
+      edits: document.getElementById('f_edits').value.trim(),
+      hiring: document.getElementById('f_hiring').value.trim(),
+      manager: document.getElementById('f_manager').value.trim(),
+      managercontact: document.getElementById('f_managercontact').value.trim(),
+      status: document.getElementById('f_status').value,
+      followup: document.getElementById('f_followup').value.trim(),
+      notes: document.getElementById('f_notes').value.trim(),
+      videos: existingClient ? (existingClient.videos || []) : []
+    };
+
+    try {
+      await setDoc(doc(db, "clients", uid), data);
+      closeModal(); // modal band karo = "back" chale jao
+      render();     // list refresh karo taake naya client nazar aaye
+    } catch(e) {
+      alert("Database error saving client.");
+      console.error(e);
+    } finally {
+      isSaving = false;
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save';
+    }
+  });
+
+  document.getElementById('searchBox').addEventListener('input', render);
+  document.getElementById('filterStatus').addEventListener('change', render);
+
+  /* ---------- Videos tracker ---------- */
+  const videosOverlay = document.getElementById('videosOverlay');
+
+  function openVideosModal(uid){
+    videosClientId = uid;
+    const c = clients.find(x=>x.uid===uid);
+    if(!c) return;
+    
+    document.getElementById('videosModalTitle').textContent = `${c.name}'s Videos`;
+    document.getElementById('videosModalSub').textContent = `#${c.id} · ${c.services || ''}`;
+    document.getElementById('v_name').value = '';
+    document.getElementById('v_received').value = '';
+    document.getElementById('v_count').value = '';
+    document.getElementById('v_editedcount').value = '0';
+    document.getElementById('v_edited').value = '';
+    document.getElementById('v_price').value = c.fee || '';
+
+    renderVideoList();
+    videosOverlay.classList.add('show');
+  }
+
+  function closeVideosModal(){
+    videosOverlay.classList.remove('show');
+    videosClientId = null;
+  }
+
+  function renderVideoList(){
+    const c = clients.find(x=>x.uid===videosClientId);
+    if(!c) return;
+    const batches = c.videos || [];
+
+    const totalVideos = batches.reduce((s,b)=>s+Number(b.count||0),0);
+    const totalEdited = batches.reduce((s,b)=>s+Math.min(Number(b.editedCount||0), Number(b.count||0)),0);
+    const totalPrice = batches.reduce((s,b)=>s+Number(b.count||0)*Number(b.price||0),0);
+
+    document.getElementById('videosSummary').innerHTML = `
+      <div class="vs-box"><div class="vs-num">${totalVideos}</div><div class="vs-lbl">Total Videos</div></div>
+      <div class="vs-box"><div class="vs-num">${totalEdited}</div><div class="vs-lbl">Edited</div></div>
+      <div class="vs-box"><div class="vs-num">PKR ${totalPrice.toLocaleString()}</div><div class="vs-lbl">Total Value</div></div>
+    `;
+
+    const list = document.getElementById('videoList');
+    if(!batches.length){
+      list.innerHTML = `<div class="video-empty">No batches logged yet. Add the first one above.</div>`;
+      return;
+    }
+
+    const sorted = batches.map((b,i)=>({...b, _idx:i})).slice().reverse();
+
+    list.innerHTML = sorted.map(b=>{
+      const count = Number(b.count||0);
+      const editedCount = Math.min(Number(b.editedCount||0), count);
+      const pending = count - editedCount;
+      const batchTotal = count * Number(b.price||0);
+      const isDone = pending === 0;
+      return `
+      <div class="video-item">
+        <div class="vi-details">
+          <div class="row"><span class="k">Name:</span> <span>${escapeHtml(b.name || '—')}</span></div>
+          <div class="row"><span class="k">Received:</span> <span>${escapeHtml(b.received || '—')}</span> <span class="k">· Batch size:</span> <span>${count} videos</span></div>
+          <div class="row">
+            <span class="k">Edited:</span>
+            <span class="${isDone ? 'status-done' : 'status-pending'}">${editedCount}/${count}${isDone ? ' · Done' : ' · ' + pending + ' pending'}</span>
+          </div>
+          <div class="row">
+            <span class="k">Completed:</span>
+            <span class="${b.edited ? 'status-done' : 'status-pending'}">${b.edited ? escapeHtml(b.edited) : 'Not yet'}</span>
+            <span class="k">· Value:</span> <span>PKR ${batchTotal.toLocaleString()} (@${Number(b.price||0).toLocaleString()}/video)</span>
+          </div>
+        </div>
+        <button class="btn btn-danger btn-small" data-delvideo="${b._idx}">Delete</button>
+      </div>
+    `;}).join('');
+
+    list.querySelectorAll('[data-delvideo]').forEach(b=>{
+      b.onclick = async (e)=>{
+        e.preventDefault();
+        const idx = Number(b.getAttribute('data-delvideo'));
+        c.videos.splice(idx,1);
+        try {
+          await setDoc(doc(db, "clients", c.uid), c);
+          renderVideoList();
+        } catch(e) {
+          console.error(e);
+        }
+      };
+    });
+  }
+
+  document.getElementById('addVideoBtn').addEventListener('click', async ()=>{
+    const c = clients.find(x=>x.uid===videosClientId);
+    if(!c) return;
+    const vname = document.getElementById('v_name').value.trim();
+    const received = document.getElementById('v_received').value.trim();
+    const count = document.getElementById('v_count').value;
+    const price = document.getElementById('v_price').value;
+    const editedCount = document.getElementById('v_editedcount').value || 0;
+    const edited = document.getElementById('v_edited').value.trim();
+
+    if(!received){ alert('Please enter the date the batch was received'); return; }
+    if(!count || Number(count) < 1){ alert('Please enter how many videos are in this batch'); return; }
+
+    if(!c.videos) c.videos = [];
+    c.videos.push({ name: vname, received, count, price, editedCount, edited });
+
+    try {
+      await setDoc(doc(db, "clients", c.uid), c);
+      
+      document.getElementById('v_name').value = '';
+      document.getElementById('v_received').value = '';
+      document.getElementById('v_count').value = '';
+      document.getElementById('v_editedcount').value = '0';
+      document.getElementById('v_edited').value = '';
+      document.getElementById('v_price').value = c.fee || '';
+
+      renderVideoList();
+    } catch(e) {
+      alert("Error saving video batch.");
+      console.error(e);
+    }
+  });
+
+  document.getElementById('videosCloseBtn').addEventListener('click', closeVideosModal);
+  videosOverlay.addEventListener('click', (e)=>{ if(e.target === videosOverlay) closeVideosModal(); });
+</script>
+
+</body>
+</html>
