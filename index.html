@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Ghani Studioz — Client Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -33,7 +34,6 @@
     font-family:'Inter', sans-serif;
     min-height:100vh;
   }
-
   .brand-title{
     text-align:center;
     font-family:'Space Grotesk', sans-serif;
@@ -46,11 +46,7 @@
     background-clip:text;
     color:transparent;
   }
-  @media (max-width:640px){
-    .brand-title{ font-size:34px; }
-  }
-
-  /* film sprocket strip */
+  @media (max-width:640px){ .brand-title{ font-size:34px; } }
   .sprocket-bar{
     height:22px;
     display:flex;
@@ -67,7 +63,6 @@
     opacity:0.55;
     flex:none;
   }
-
   header{
     padding:36px 32px 22px;
     max-width:1180px;
@@ -89,12 +84,7 @@
     letter-spacing:-0.5px;
   }
   h1 span{ color:var(--gold); }
-  .sub{
-    color:var(--text-dim);
-    font-size:15px;
-    max-width:520px;
-  }
-
+  .sub{ color:var(--text-dim); font-size:15px; max-width:520px; }
   .stats{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -121,13 +111,11 @@
     letter-spacing:1px;
     margin-top:2px;
   }
-
   main{
     max-width:1180px;
     margin:0 auto;
     padding:28px 32px 80px;
   }
-
   .toolbar{
     display:flex;
     gap:12px;
@@ -151,7 +139,6 @@
   }
   #searchBox{ flex:1; min-width:180px; }
   #filterStatus{ min-width:140px; }
-
   .btn{
     font-family:'Space Grotesk', sans-serif;
     font-weight:600;
@@ -163,6 +150,7 @@
     transition:transform .12s ease, box-shadow .12s ease;
   }
   .btn:hover{ transform:translateY(-1px); }
+  .btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
   .btn:focus-visible{ outline:2px solid var(--gold-soft); outline-offset:2px; }
   .btn-primary{
     background:linear-gradient(135deg, var(--gold), #d98f2e);
@@ -181,13 +169,11 @@
     border:1px solid rgba(242,114,114,0.35);
   }
   .btn-small{ padding:6px 12px; font-size:12px; }
-
   .grid{
     display:grid;
     grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
     gap:16px;
   }
-
   .card{
     background:var(--card);
     border:1px solid var(--line);
@@ -197,7 +183,6 @@
     transition:border-color .15s ease, transform .15s ease;
   }
   .card:hover{ border-color:var(--purple-soft); }
-
   .add-tile{
     display:flex;
     flex-direction:column;
@@ -209,10 +194,7 @@
     cursor:pointer;
     min-height:180px;
   }
-  .add-tile:hover{
-    border-color:var(--gold);
-    background:rgba(232,167,73,0.06);
-  }
+  .add-tile:hover{ border-color:var(--gold); background:rgba(232,167,73,0.06); }
   .add-tile .plus-icon{
     font-family:'Space Grotesk', sans-serif;
     font-size:38px;
@@ -243,10 +225,9 @@
     font-family:'Space Grotesk', sans-serif;
     font-size:19px;
     font-weight:700;
-    margin:2px 0 0;
+    margin-top:2px;
   }
   .tag{
-    display:inline-block;
     font-size:11px;
     font-weight:600;
     padding:3px 9px;
@@ -258,28 +239,21 @@
   .tag-completed{ background:rgba(138,79,201,0.2); color:var(--purple-soft); }
   .tag-hold{ background:rgba(232,167,73,0.18); color:var(--gold-soft); }
   .tag-cancelled{ background:rgba(242,114,114,0.15); color:var(--red); }
-
   .pay-paid{ color:var(--green); }
   .pay-unpaid{ color:var(--red); }
   .pay-partial, .pay-advance{ color:var(--gold-soft); }
-
   .field-row{
     display:flex;
     justify-content:space-between;
     font-size:13px;
     padding:5px 0;
     border-bottom:1px dashed rgba(255,255,255,0.06);
+    gap:12px;
   }
   .field-row:last-of-type{ border-bottom:none; }
-  .field-row .k{ color:var(--text-dim); }
-  .field-row .v{ font-weight:500; text-align:right; }
-
-  .card-actions{
-    display:flex;
-    gap:8px;
-    margin-top:14px;
-  }
-
+  .field-row .k{ color:var(--text-dim); flex-shrink:0; }
+  .field-row .v{ font-weight:500; text-align:right; word-break:break-all; }
+  .card-actions{ display:flex; gap:8px; margin-top:14px; }
   .videos-btn{
     width:100%;
     margin-top:12px;
@@ -307,7 +281,6 @@
     padding:1px 8px;
     border-radius:20px;
   }
-
   .empty{
     text-align:center;
     padding:70px 20px;
@@ -321,8 +294,6 @@
     color:var(--text);
     margin-bottom:8px;
   }
-
-  /* modal */
   .overlay{
     position:fixed; inset:0;
     background:rgba(10,6,16,0.7);
@@ -368,14 +339,11 @@
     gap:10px;
     margin-top:20px;
   }
-
   @media (max-width:640px){
     .stats{ grid-template-columns:repeat(2,1fr); }
     .form-grid{ grid-template-columns:1fr; }
     h1{ font-size:32px; }
   }
-
-  /* videos modal */
   .videos-modal{ max-width:600px; }
   .videos-modal-head{
     display:flex;
@@ -390,7 +358,6 @@
     color:var(--gold);
     margin-top:4px;
   }
-
   .videos-summary{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -417,7 +384,6 @@
     letter-spacing:0.5px;
     margin-top:2px;
   }
-
   .video-form{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -436,7 +402,6 @@
     font-size:12px;
     color:var(--text-dim);
   }
-
   .video-list{
     display:flex;
     flex-direction:column;
@@ -459,6 +424,7 @@
     display:flex;
     gap:14px;
     margin-bottom:3px;
+    flex-wrap:wrap;
   }
   .video-item .vi-details .row:last-child{ margin-bottom:0; }
   .video-item .vi-details .k{ color:var(--text-dim); }
@@ -470,6 +436,11 @@
     color:var(--text-dim);
     font-size:13px;
   }
+  .loading{
+    text-align:center;
+    padding:40px;
+    color:var(--text-dim);
+  }
 </style>
 </head>
 <body>
@@ -478,10 +449,10 @@
 <div id="loginScreen" style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;">
   <div style="width:100%; max-width:360px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:32px 28px;">
     <div style="text-align:center; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:28px; letter-spacing:1px; background:linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--purple-soft)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:22px;">GHANI STUDIOZ</div>
-    <label style="display:block; margin-bottom:14px; font-size:13px; color:var(--text-dim);">Email
+    <label style="font-size:12px; color:var(--text-dim);">Email
       <input id="loginEmail" type="email" placeholder="you@example.com" style="width:100%; margin-top:6px;">
     </label>
-    <label style="display:block; margin-bottom:18px; font-size:13px; color:var(--text-dim);">Password
+    <label style="font-size:12px; color:var(--text-dim); display:block; margin:12px 0 14px;">Password
       <input id="loginPassword" type="password" placeholder="••••••••" style="width:100%; margin-top:6px;">
     </label>
     <button class="btn btn-primary" id="loginBtn" style="width:100%;">Log In</button>
@@ -489,14 +460,17 @@
   </div>
 </div>
 
-<!-- Main App Content (hidden until logged in) -->
+<!-- Main App Content -->
 <div id="appContent" style="display:none;">
 
 <div class="brand-title">GHANI STUDIOZ</div>
 <div class="sprocket-bar" id="sprocketBar"></div>
 
 <header style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
-  <h1>Client <span>Details</span></h1>
+  <div>
+    <div class="eyebrow">Private Client Dashboard</div>
+    <h1>Client <span>Details</span></h1>
+  </div>
   <button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button>
 </header>
 
@@ -518,6 +492,7 @@
     <button class="btn btn-primary" id="addBtn">+ Add Client</button>
   </div>
 
+  <div id="loadingState" class="loading">Loading clients...</div>
   <div class="grid" id="clientGrid"></div>
   <div class="empty" id="emptyState" style="display:none;">
     <div class="big">No clients yet</div>
@@ -532,8 +507,8 @@
       <label>Client ID
         <input id="f_id" type="text" placeholder="e.g. 002">
       </label>
-      <label>Name
-        <input id="f_name" type="text" placeholder="Client name">
+      <label>Name *
+        <input id="f_name" type="text" placeholder="Client name" required>
       </label>
       <label>Contact Number
         <input id="f_contact" type="text" placeholder="+92 3xx xxxxxxx">
@@ -560,7 +535,7 @@
         <input id="f_edits" type="text" placeholder="e.g. informative">
       </label>
       <label>Hiring Date
-        <input id="f_hiring" type="text" placeholder="dd/mm/yyyy">
+        <input id="f_hiring" type="date">
       </label>
       <label>Manager Name
         <input id="f_manager" type="text" placeholder="Manager name">
@@ -577,18 +552,18 @@
         </select>
       </label>
       <label>Fee per Video (PKR)
-        <input id="f_fee" type="number" placeholder="0">
+        <input id="f_fee" type="number" placeholder="0" min="0">
       </label>
       <label>Follow-up Date
-        <input id="f_followup" type="text" placeholder="dd/mm/yyyy">
+        <input id="f_followup" type="date">
       </label>
       <label class="full">Notes
         <textarea id="f_notes" rows="2" placeholder="Anything worth remembering"></textarea>
       </label>
     </div>
     <div class="modal-actions">
-      <button class="btn btn-ghost" id="cancelBtn">Cancel</button>
-      <button class="btn btn-primary" id="saveBtn">Save Client</button>
+      <button class="btn btn-ghost" id="cancelBtn" type="button">Cancel</button>
+      <button class="btn btn-primary" id="saveBtn" type="button">Save Client</button>
     </div>
   </div>
 </div>
@@ -600,47 +575,41 @@
         <h2 id="videosModalTitle">Videos</h2>
         <div class="videos-sub" id="videosModalSub"></div>
       </div>
-      <button class="btn btn-ghost btn-small" id="videosCloseBtn">Close</button>
+      <button class="btn btn-ghost btn-small" id="videosCloseBtn" type="button">Close</button>
     </div>
-
     <div class="videos-summary" id="videosSummary"></div>
-
     <div class="video-form">
       <label class="full">Video Name (base name)
         <input id="v_name" type="text" placeholder="e.g. Ghani Vlog">
       </label>
       <label>Date Received
-        <input id="v_received" type="text" placeholder="dd/mm/yyyy">
+        <input id="v_received" type="date">
       </label>
       <label>Fee per Video (PKR)
-        <input id="v_price" type="number" placeholder="e.g. 700">
+        <input id="v_price" type="number" placeholder="e.g. 700" min="0">
       </label>
       <label>How Many Videos
         <input id="v_count" type="number" placeholder="e.g. 10" min="1" value="1">
       </label>
       <label>Videos Edited Already
-        <input id="v_editedcount" type="number" placeholder="0" value="0">
+        <input id="v_editedcount" type="number" placeholder="0" min="0" value="0">
       </label>
       <label>Completion Date (if done)
-        <input id="v_edited" type="text" placeholder="dd/mm/yyyy">
+        <input id="v_edited" type="date">
       </label>
-      <button class="btn btn-primary" id="addVideoBtn">+ Add Video(s)</button>
+      <button class="btn btn-primary" id="addVideoBtn" type="button">+ Add Video(s)</button>
     </div>
-
     <div class="video-list" id="videoList"></div>
   </div>
 </div>
 
 </div>
-<!-- /appContent -->
 
-<!-- Firebase SDK Scripts Modules Insertion -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  // Ghani Studioz Authenticated Project Config Details
   const firebaseConfig = {
     apiKey: "AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSHT3lc",
     authDomain: "ghani-studioz.firebaseapp.com",
@@ -656,10 +625,10 @@
   const auth = getAuth(app);
   const clientsCollection = collection(db, "clients");
 
-  /* ---------- Login / Auth ---------- */
   const loginScreen = document.getElementById('loginScreen');
   const appContent = document.getElementById('appContent');
   const loginError = document.getElementById('loginError');
+  const loadingState = document.getElementById('loadingState');
   let unsubscribeClients = null;
 
   document.getElementById('loginBtn').addEventListener('click', doLogin);
@@ -674,17 +643,23 @@
       loginError.style.display = 'block';
       return;
     }
+    const btn = document.getElementById('loginBtn');
+    btn.disabled = true;
+    btn.textContent = 'Logging in...';
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch(e){
       loginError.textContent = 'Login fail ho gaya. Email/password check karein.';
       loginError.style.display = 'block';
       console.error(e);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Log In';
     }
   }
 
   document.getElementById('logoutBtn').addEventListener('click', ()=>{
-    signOut(auth);
+    signOut(auth).catch(console.error);
   });
 
   onAuthStateChanged(auth, (user) => {
@@ -702,6 +677,8 @@
   let clients = [];
   let editingId = null;
   let videosClientId = null;
+  let pendingUid = null;
+  let isSaving = false;
 
   const grid = document.getElementById('clientGrid');
   const emptyState = document.getElementById('emptyState');
@@ -718,20 +695,32 @@
     }
   }
   buildSprockets();
-  window.addEventListener('resize', buildSprockets);
+  let resizeTimeout;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(buildSprockets, 200);
+  });
 
-  // Firestore Realtime Database Listener Integration
   function startClientsListener(){
-    if(unsubscribeClients) return; // already listening
+    if(unsubscribeClients) return;
+    loadingState.style.display = 'block';
     unsubscribeClients = onSnapshot(clientsCollection, (snapshot) => {
       clients = [];
       snapshot.forEach((doc) => {
-        clients.push(doc.data());
+        const data = doc.data();
+        if(data && data.uid) clients.push(data);
       });
-      // Sorting to keep consistency
-      clients.sort((a, b) => b.id.localeCompare(a.id));
+      // FIXED: Numeric sort
+      clients.sort((a, b) => {
+        const na = parseInt(a.id, 10);
+        const nb = parseInt(b.id, 10);
+        if(!isNaN(na) && !isNaN(nb)) return nb - na;
+        return String(b.id).localeCompare(String(a.id));
+      });
+      loadingState.style.display = 'none';
       render();
     }, (error) => {
+      loadingState.textContent = 'Error loading data. Check Firestore Rules.';
       console.error("Firestore loading error: ", error);
     });
   }
@@ -750,14 +739,18 @@
     const filterStatus = document.getElementById('filterStatus').value;
 
     const filtered = clients.filter(c=>{
-      const matchesQ = !q || [c.name,c.tiktok,c.services,c.approach,c.manager]
-        .join(' ').toLowerCase().includes(q);
+      // FIXED: undefined safe
+      const searchText = [c.name, c.tiktok, c.services, c.approach, c.manager, c.id].map(x=>x||'').join(' ').toLowerCase();
+      const matchesQ = !q || searchText.includes(q);
       const matchesStatus = !filterStatus || c.status === filterStatus;
       return matchesQ && matchesStatus;
     });
 
     grid.innerHTML = '';
     emptyState.style.display = filtered.length ? 'none' : 'block';
+    if(!filtered.length && clients.length===0){
+        // keep empty state
+    }
 
     const addTile = document.createElement('div');
     addTile.className = 'card add-tile';
@@ -771,27 +764,27 @@
       card.innerHTML = `
         <div class="card-top">
           <div>
-            <div class="cid">#${c.id}</div>
+            <div class="cid">#${escapeHtml(c.id)}</div>
             <div class="cname">${escapeHtml(c.name)}</div>
           </div>
-          <span class="tag ${statusTagClass(c.status)}">${c.status}</span>
+          <span class="tag ${statusTagClass(c.status)}">${escapeHtml(c.status)}</span>
         </div>
-        <div class="field-row"><span class="k">Contact</span><span class="v">${escapeHtml(c.contact)}</span></div>
-        <div class="field-row"><span class="k">Social Media</span><span class="v">${escapeHtml(c.tiktok)}</span></div>
-        <div class="field-row"><span class="k">Email</span><span class="v">${escapeHtml(c.email)}</span></div>
+        <div class="field-row"><span class="k">Contact</span><span class="v">${escapeHtml(c.contact)||'—'}</span></div>
+        <div class="field-row"><span class="k">Social Media</span><span class="v">${escapeHtml(c.tiktok)||'—'}</span></div>
+        <div class="field-row"><span class="k">Email</span><span class="v">${escapeHtml(c.email)||'—'}</span></div>
         <div class="field-row"><span class="k">Fee per Video</span><span class="v">PKR ${Number(c.fee||0).toLocaleString()}</span></div>
-        <div class="field-row"><span class="k">Services</span><span class="v">${escapeHtml(c.services)}</span></div>
-        <div class="field-row"><span class="k">Edits Type</span><span class="v">${escapeHtml(c.edits)}</span></div>
-        <div class="field-row"><span class="k">Hiring Date</span><span class="v">${escapeHtml(c.hiring)}</span></div>
+        <div class="field-row"><span class="k">Services</span><span class="v">${escapeHtml(c.services)||'—'}</span></div>
+        <div class="field-row"><span class="k">Edits Type</span><span class="v">${escapeHtml(c.edits)||'—'}</span></div>
+        <div class="field-row"><span class="k">Hiring Date</span><span class="v">${escapeHtml(c.hiring)||'—'}</span></div>
         <div class="field-row"><span class="k">Manager</span><span class="v">${escapeHtml(c.manager||'—')}</span></div>
         <div class="field-row"><span class="k">Follow-up</span><span class="v">${escapeHtml(c.followup||'—')}</span></div>
         ${c.notes ? `<div class="field-row"><span class="k">Notes</span><span class="v">${escapeHtml(c.notes)}</span></div>` : ''}
-        <button class="videos-btn" data-videos="${c.uid}">
+        <button class="videos-btn" data-videos="${escapeHtml(c.uid)}">
           🎬 Videos <span class="vcount">${(c.videos||[]).reduce((s,b)=>s+Number(b.count||0),0)}</span>
         </button>
         <div class="card-actions">
-          <button class="btn btn-ghost btn-small edit-btn-trigger" data-edit="${c.uid}">Edit</button>
-          <button class="btn btn-danger btn-small" data-del="${c.uid}">Delete</button>
+          <button class="btn btn-ghost btn-small edit-btn-trigger" data-edit="${escapeHtml(c.uid)}">Edit</button>
+          <button class="btn btn-danger btn-small" data-del="${escapeHtml(c.uid)}">Delete</button>
         </div>
       `;
       grid.appendChild(card);
@@ -832,6 +825,7 @@
   }
 
   function openModal(uid){
+    pendingUid = null;
     editingId = uid || null;
     document.getElementById('modalTitle').textContent = uid ? 'Edit Client' : 'Add Client';
     const c = uid ? clients.find(x=>x.uid===uid) : null;
@@ -845,11 +839,11 @@
     document.getElementById('f_services').value = c ? c.services : 'videos editing';
     document.getElementById('f_approach').value = c ? c.approach : '';
     document.getElementById('f_edits').value = c ? c.edits : '';
-    document.getElementById('f_hiring').value = c ? c.hiring : '';
+    document.getElementById('f_hiring').value = c ? (c.hiring && c.hiring.includes('/') ? '' : c.hiring) : '';
     document.getElementById('f_manager').value = c ? c.manager : '';
     document.getElementById('f_managercontact').value = c ? c.managercontact : '';
     document.getElementById('f_status').value = c ? c.status : 'Active';
-    document.getElementById('f_followup').value = c ? c.followup : '';
+    document.getElementById('f_followup').value = c ? (c.followup && c.followup.includes('/') ? '' : c.followup) : '';
     document.getElementById('f_notes').value = c ? c.notes : '';
 
     overlay.classList.add('show');
@@ -864,6 +858,7 @@
   function closeModal(){
     overlay.classList.remove('show');
     editingId = null;
+    pendingUid = null;
   }
 
   async function deleteClient(uid){
@@ -871,6 +866,7 @@
     try {
       await deleteDoc(doc(db, "clients", uid));
     } catch(e) {
+      alert("Delete failed. Check Firestore Rules.");
       console.error("Error deleting document: ", e);
     }
   }
@@ -878,11 +874,10 @@
   document.getElementById('addBtn').addEventListener('click', ()=>openModal(null));
   document.getElementById('cancelBtn').addEventListener('click', closeModal);
   overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
-
-  let isSaving = false; // duplicate prevent karne ke liye
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeModal(); closeVideosModal(); } });
 
   document.getElementById('saveBtn').addEventListener('click', async ()=>{
-    if(isSaving) return; // agar already saving hai to kuch na karo
+    if(isSaving) return;
     
     const name = document.getElementById('f_name').value.trim();
     if(!name){ alert('Name is required'); return; }
@@ -892,7 +887,11 @@
     saveBtn.disabled = true;
     saveBtn.textContent = 'Saving...';
 
-    const uid = editingId ? editingId : 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+    // FIXED: UID ek bar banao, duplicate rokho
+    if(!editingId && !pendingUid){
+      pendingUid = 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+    }
+    const uid = editingId ? editingId : pendingUid;
     const existingClient = editingId ? clients.find(c => c.uid === editingId) : null;
 
     const data = {
@@ -901,7 +900,7 @@
       name,
       contact: document.getElementById('f_contact').value.trim(),
       email: document.getElementById('f_email').value.trim(),
-      fee: document.getElementById('f_fee').value,
+      fee: document.getElementById('f_fee').value || "0",
       tiktok: document.getElementById('f_tiktok').value.trim(),
       services: document.getElementById('f_services').value,
       approach: document.getElementById('f_approach').value.trim(),
@@ -916,11 +915,12 @@
     };
 
     try {
-      await setDoc(doc(db, "clients", uid), data);
-      closeModal(); // modal band karo = "back" chale jao
-      render();     // list refresh karo taake naya client nazar aaye
+      await setDoc(doc(db, "clients", uid), data, { merge: true });
+      pendingUid = null;
+      closeModal();
+      // render() onSnapshot se auto hoga, manual call ki zaroorat nahi
     } catch(e) {
-      alert("Database error saving client.");
+      alert("Database error saving client. Rules check karo.");
       console.error(e);
     } finally {
       isSaving = false;
@@ -944,7 +944,7 @@
     document.getElementById('videosModalSub').textContent = `#${c.id} · ${c.services || ''}`;
     document.getElementById('v_name').value = '';
     document.getElementById('v_received').value = '';
-    document.getElementById('v_count').value = '';
+    document.getElementById('v_count').value = '1';
     document.getElementById('v_editedcount').value = '0';
     document.getElementById('v_edited').value = '';
     document.getElementById('v_price').value = c.fee || '';
@@ -979,6 +979,7 @@
       return;
     }
 
+    // FIXED: delete bug - original index preserve karo
     const sorted = batches.map((b,i)=>({...b, _idx:i})).slice().reverse();
 
     list.innerHTML = sorted.map(b=>{
@@ -1010,12 +1011,15 @@
       b.onclick = async (e)=>{
         e.preventDefault();
         const idx = Number(b.getAttribute('data-delvideo'));
-        c.videos.splice(idx,1);
+        if(!confirm('Delete this batch?')) return;
+        // FIXED: filter method, splice bug khatam
+        c.videos = c.videos.filter((_, i) => i !== idx);
         try {
-          await setDoc(doc(db, "clients", c.uid), c);
+          await setDoc(doc(db, "clients", c.uid), c, { merge: true });
           renderVideoList();
-        } catch(e) {
-          console.error(e);
+        } catch(err) {
+          alert("Delete failed");
+          console.error(err);
         }
       };
     });
@@ -1035,14 +1039,14 @@
     if(!count || Number(count) < 1){ alert('Please enter how many videos are in this batch'); return; }
 
     if(!c.videos) c.videos = [];
-    c.videos.push({ name: vname, received, count, price, editedCount, edited });
+    c.videos.push({ name: vname, received, count, price: price||c.fee||0, editedCount, edited });
 
     try {
-      await setDoc(doc(db, "clients", c.uid), c);
+      await setDoc(doc(db, "clients", c.uid), c, { merge: true });
       
       document.getElementById('v_name').value = '';
       document.getElementById('v_received').value = '';
-      document.getElementById('v_count').value = '';
+      document.getElementById('v_count').value = '1';
       document.getElementById('v_editedcount').value = '0';
       document.getElementById('v_edited').value = '';
       document.getElementById('v_price').value = c.fee || '';
