@@ -918,7 +918,7 @@
       
       const cleanHandle = c.tiktok ? c.tiktok.replace('@', '') : '';
       const socialLinkHTML = c.tiktok 
-        ? `<a href="https://www.instagram.com/${cleanHandle}" target="_blank" class="social-link">${escapeHtml(c.tiktok)}</a>` 
+        ? `<a href="https://www.instagram.com/${encodeURIComponent(cleanHandle)}" target="_blank" rel="noopener noreferrer" class="social-link">${escapeHtml(c.tiktok)}</a>` 
         : '—';
 
       card.innerHTML = `
@@ -927,7 +927,7 @@
             <div class="cid">#${c.id}</div>
             <div class="cname">${escapeHtml(c.name)}</div>
           </div>
-          <span class="tag ${statusTagClass(c.status)}">${c.status}</span>
+          <span class="tag ${statusTagClass(c.status)}">${escapeHtml(c.status)}</span>
         </div>
         <div class="field-row"><span class="k">Contact</span><span class="v">${escapeHtml(c.contact)}</span></div>
         <div class="field-row"><span class="k">Social Handle</span><span class="v">${socialLinkHTML}</span></div>
