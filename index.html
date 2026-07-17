@@ -4,879 +4,181 @@
 <meta charset="UTF-8">
 <title>Ghani Studioz — Client Details</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #16101f;
-    --bg-2: #1f1730;
-    --card: #241a38;
-    --card-hover: #2c2145;
-    --gold: #e8a749;
-    --gold-soft: #f4c884;
-    --purple: #8a4fc9;
-    --purple-soft: #a875e0;
-    --text: #f2ecf9;
-    --text-dim: #a89bc0;
-    --line: #382a52;
-    --green: #4ade80;
-    --red: #f27272;
-    --amber: #e8a749;
-  }
-  *{ box-sizing:border-box; }
-  body{
-    margin:0;
-    background:
-      radial-gradient(1200px 600px at 10% -10%, #2a1f47 0%, transparent 60%),
-      radial-gradient(900px 500px at 110% 10%, #3a2358 0%, transparent 55%),
-      var(--bg);
-    color:var(--text);
-    font-family:'Inter', sans-serif;
-    min-height:100vh;
-  }
-  .brand-title{
-    text-align:center;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size:56px;
-    letter-spacing:2px;
-    padding:22px 20px 6px;
-    background:linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--purple-soft));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-  @media (max-width:640px){ .brand-title{ font-size:34px; } }
-  .sprocket-bar{
-    height:22px;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    padding:0 24px;
-    background:#0f0a18;
-    overflow:hidden;
-    border-bottom:1px solid var(--line);
-  }
-  .sprocket-bar .hole{
-    width:10px; height:10px; border-radius:2px;
-    background:var(--gold);
-    opacity:0.55;
-    flex:none;
-  }
-  header{
-    padding:36px 32px 22px;
-    max-width:1180px;
-    margin:0 auto;
-  }
-  h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:44px;
-    font-weight:700;
-    margin:0 0 6px;
-    letter-spacing:-0.5px;
-  }
-  h1 span{ color:var(--gold); }
-  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:6px; }
-  .stats{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-    max-width:1180px;
-    margin:22px auto 0;
-    padding:0 32px;
-  }
-  .stat{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:16px 18px;
-  }
-  .stat .num{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:28px;
-    font-weight:700;
-  }
-  .stat .lbl{
-    font-size:12px;
-    color:var(--text-dim);
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-top:2px;
-  }
-  main{
-    max-width:1180px;
-    margin:0 auto;
-    padding:28px 32px 80px;
-  }
+  :root{ --bg:#16101f; --bg-2:#1f1730; --card:#241a38; --gold:#e8a749; --gold-soft:#f4c884; --purple:#8a4fc9; --purple-soft:#a875e0; --text:#f2ecf9; --text-dim:#a89bc0; --line:#382a52; --green:#4ade80; --red:#f27272; }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+  .brand-title{text-align:center;font-family:'Space Grotesk';font-weight:700;font-size:42px;letter-spacing:3px;padding:20px;background:linear-gradient(135deg,var(--gold-soft),var(--gold) 45%,var(--purple-soft));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sprocket-wrap{height:26px;background:#0f0a18;border-bottom:1px solid var(--line);overflow:hidden}
+  .sprocket-track{display:flex;gap:28px;animation:scrollSprocket 18s linear infinite;width:max-content}
+  .sprocket-track .hole{width:12px;height:8px;background:var(--gold);border-radius:2px;opacity:.6;flex:none;margin-top:9px}
+  @keyframes scrollSprocket{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  header{padding:24px 32px 12px;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+  h1{font-family:'Space Grotesk';font-size:36px;font-weight:700;margin:0} h1 span{color:var(--gold)}
+  .eyebrow{font-family:'JetBrains Mono';font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+  .stats{max-width:1180px;margin:18px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .stat .num{font-family:'Space Grotesk';font-size:28px;font-weight:700}
+  /* TOOLBAR FIXED - OPEN LAYOUT */
   .toolbar{
-    display:flex;
-    gap:12px;
-    margin-bottom:22px;
-    flex-wrap:wrap;
-    align-items:center;
-  }
-  input, select, textarea{
-    font-family:'Inter', sans-serif;
-    background:var(--bg-2);
-    border:1px solid var(--line);
-    color:var(--text);
-    border-radius:8px;
-    padding:10px 13px;
-    font-size:14px;
-    outline:none;
-  }
-  input:focus, select:focus, textarea:focus{
-    border-color:var(--purple-soft);
-    box-shadow:0 0 0 3px rgba(138,79,201,0.25);
-  }
-  #searchBox{ flex:1; min-width:180px; }
-  #filterStatus{ min-width:140px; }
-  .btn{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size:14px;
-    border:none;
-    border-radius:8px;
-    padding:10px 18px;
-    cursor:pointer;
-    transition:transform .12s ease, box-shadow .12s ease;
-  }
-  .btn:hover{ transform:translateY(-1px); }
-  .btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
-  .btn-primary{
-    background:linear-gradient(135deg, var(--gold), #d98f2e);
-    color:#1a1206;
-    box-shadow:0 4px 14px rgba(232,167,73,0.25);
-  }
-  .btn-ghost{
-    background:transparent;
-    color:var(--text-dim);
-    border:1px solid var(--line);
-  }
-  .btn-ghost:hover{ color:var(--text); border-color:var(--purple-soft); }
-  .btn-danger{
-    background:transparent;
-    color:var(--red);
-    border:1px solid rgba(242,114,114,0.35);
-  }
-  .btn-small{ padding:6px 12px; font-size:12px; }
-  .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
-    gap:16px;
-  }
-  .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:18px;
-    position:relative;
-    transition:border-color .15s ease;
-  }
-  .card:hover{ border-color:var(--purple-soft); }
-  .add-tile{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    border:2px dashed var(--line);
-    background:transparent;
-    cursor:pointer;
-    min-height:180px;
-  }
-  .add-tile:hover{ border-color:var(--gold); background:rgba(232,167,73,0.06); }
-  .add-tile .plus-icon{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:38px;
-    font-weight:700;
-    color:var(--gold);
-    line-height:1;
-  }
-  .add-tile .add-label{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:14px;
-    color:var(--text-dim);
-    text-transform:uppercase;
-    letter-spacing:1px;
-  }
-  .card-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:10px;
-  }
-  .cid{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11px;
-    color:var(--gold);
-    letter-spacing:1px;
-  }
-  .cname{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:19px;
-    font-weight:700;
-    margin-top:2px;
-  }
-  .tag{
-    font-size:11px;
-    font-weight:600;
-    padding:3px 9px;
-    border-radius:20px;
-    text-transform:uppercase;
-  }
-  .tag-active{ background:rgba(74,222,128,0.15); color:var(--green); }
-  .tag-completed{ background:rgba(138,79,201,0.2); color:var(--purple-soft); }
-  .tag-hold{ background:rgba(232,167,73,0.18); color:var(--gold-soft); }
-  .tag-cancelled{ background:rgba(242,114,114,0.15); color:var(--red); }
-  .field-row{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-    padding:5px 0;
-    border-bottom:1px dashed rgba(255,255,255,0.06);
+    grid-template-columns: 1fr 200px 150px;
     gap:12px;
-  }
-  .field-row .k{ color:var(--text-dim); }
-  .field-row .v{ font-weight:500; text-align:right; word-break:break-all; }
-  .card-actions{ display:flex; gap:8px; margin-top:14px; }
-  .videos-btn{
-    width:100%;
-    margin-top:12px;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size:13px;
-    background:rgba(138,79,201,0.12);
-    border:1px solid var(--purple-soft);
-    color:var(--purple-soft);
-    border-radius:8px;
-    padding:9px 12px;
-    cursor:pointer;
-    display:flex;
     align-items:center;
-    justify-content:center;
-    gap:8px;
-  }
-  .videos-btn .vcount{
-    background:var(--purple-soft);
-    color:#1a1029;
-    font-size:11px;
-    font-weight:700;
-    padding:1px 8px;
-    border-radius:20px;
-  }
-  .empty{
-    text-align:center;
-    padding:70px 20px;
-    color:var(--text-dim);
-    border:1px dashed var(--line);
-    border-radius:12px;
-  }
-  .empty .big{ font-family:'Space Grotesk', sans-serif; font-size:20px; color:var(--text); margin-bottom:8px; }
-  .overlay{
-    position:fixed; inset:0;
-    background:rgba(10,6,16,0.7);
-    backdrop-filter:blur(3px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:50;
-    padding:20px;
-  }
-  .overlay.show{ display:flex; }
-  .modal{
-    background:var(--bg-2);
+    background: var(--card);
     border:1px solid var(--line);
     border-radius:14px;
-    width:100%;
-    max-width:640px;
-    max-height:88vh;
-    overflow-y:auto;
-    padding:26px;
+    padding:12px;
+    margin-bottom:22px;
   }
-  .modal h2{ font-family:'Space Grotesk', sans-serif; margin:0 0 18px; font-size:22px; }
-  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .form-grid label{ display:flex; flex-direction:column; gap:5px; font-size:12px; color:var(--text-dim); }
-  .form-grid label.full{ grid-column:1/-1; }
-  .modal-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
-  @media (max-width:640px){ .form-grid{ grid-template-columns:1fr; } h1{ font-size:32px; } }
-  .videos-modal{ max-width:600px; }
-  .videos-modal-head{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
-  .videos-sub{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--gold); margin-top:4px; }
-  .videos-summary{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; }
-  .videos-summary .vs-box{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 12px; text-align:center; }
-  .videos-summary .vs-num{ font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:700; color:var(--gold); }
-  .videos-summary .vs-lbl{ font-size:11px; color:var(--text-dim); text-transform:uppercase; margin-top:2px; }
-  .video-form{ display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:end; margin-bottom:18px; padding-bottom:18px; border-bottom:1px solid var(--line); }
-  .video-form button{ grid-column:1/-1; }
-  .video-form label.full{ grid-column:1/-1; }
-  .video-form label{ display:flex; flex-direction:column; gap:5px; font-size:12px; color:var(--text-dim); }
-  .video-list{ display:flex; flex-direction:column; gap:10px; max-height:320px; overflow-y:auto; }
-  .video-item{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
-  .video-item .vi-details{ font-size:13px; }
-  .video-item .vi-details .row{ display:flex; gap:14px; margin-bottom:3px; flex-wrap:wrap; }
-  .video-item .vi-details .k{ color:var(--text-dim); }
-  .video-item .status-pending{ color:var(--amber); }
-  .video-item .status-done{ color:var(--green); }
-  .video-empty{ text-align:center; padding:30px; color:var(--text-dim); font-size:13px; }
-  .loading{ text-align:center; padding:40px; color:var(--text-dim); }
+  .toolbar input, .toolbar select{
+    height:46px;
+    background: var(--bg-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:0 14px;
+    font-size:14px;
+    width:100%;
+    color:var(--text);
+    outline:none;
+  }
+  .toolbar input:focus, .toolbar select:focus{border-color:var(--gold); box-shadow:0 0 0 3px rgba(232,167,73,0.15)}
+  #addBtn{height:46px; font-weight:700; white-space:nowrap; border-radius:10px}
+  @media(max-width:800px){ .toolbar{grid-template-columns:1fr} }
+  input,select,textarea{background:var(--bg-2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:10px 13px;font-size:14px;outline:none;width:100%}
+  .btn{font-family:'Space Grotesk';font-weight:600;border:none;border-radius:8px;padding:10px 18px;cursor:pointer}
+  .btn-primary{background:linear-gradient(135deg,var(--gold),#d98f2e);color:#1a1206}
+  .btn-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--line)}
+  .btn-danger{background:transparent;color:var(--red);border:1px solid rgba(242,114,114,.35)}
+  .btn-small{padding:6px 12px;font-size:12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;overflow:hidden}
+  .add-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:2px dashed var(--line);background:transparent;cursor:pointer;min-height:240px}
+  .field-row{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:center;font-size:13px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+  .field-row .k{color:var(--text-dim);font-weight:500;white-space:nowrap}
+  .field-row .v{font-weight:500;text-align:right;word-break:break-word;overflow-wrap:anywhere;color:var(--text)}
+  .tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;text-transform:uppercase}
+  .tag-active{background:rgba(74,222,128,.15);color:var(--green)} .tag-completed{background:rgba(138,79,201,.2);color:#a875e0} .tag-hold{background:rgba(232,167,73,.18);color:#f4c884} .tag-cancelled{background:rgba(242,114,114,.15);color:var(--red)}
+  .videos-btn{width:100%;margin-top:14px;font-family:'Space Grotesk';font-weight:600;font-size:13px;background:rgba(138,79,201,.12);border:1px solid #a875e0;color:#a875e0;border-radius:8px;padding:9px 12px;cursor:pointer;display:flex;justify-content:center;gap:8px}
+  .overlay{position:fixed;inset:0;background:rgba(10,6,16,.7);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .overlay.show{display:flex}
+  .modal{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;width:100%;max-width:640px;max-height:88vh;overflow-y:auto;padding:26px}
+  .modal.videos-modal{max-width:850px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px} .form-grid label{font-size:12px;color:var(--text-dim);display:flex;flex-direction:column;gap:5px} .form-grid label.full{grid-column:1/-1}
+  .videos-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+  .vs-box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center} .vs-num{font-family:'Space Grotesk';font-size:20px;font-weight:700;color:var(--gold)}
+  .video-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .video-list{display:flex;flex-direction:column;gap:12px;max-height:65vh;overflow-y:auto}
+  .video-item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px} .video-item.expanded{border-color:#a875e0}
+  .more-btn{background:rgba(232,167,73,.15);border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer}
+  .sub-videos{margin-top:14px;border-top:1px solid var(--line);padding-top:12px;display:none} .sub-videos.show{display:block}
+  .sub-row{display:grid;grid-template-columns:36px 1fr 130px 1fr 60px;gap:8px;align-items:center;padding:8px;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+  .batch-edit-form{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px;padding:12px;background:rgba(138,79,201,.08);border:1px dashed #a875e0;border-radius:8px}
+  .batch-edit-form label{font-size:11px;color:var(--text-dim);display:flex;flex-direction:column;gap:4px} .batch-edit-form input{padding:7px 9px;font-size:12px}
+  @media(max-width:700px){ .sub-row{grid-template-columns:30px 1fr} .batch-edit-form{grid-template-columns:1fr 1fr} .field-row{grid-template-columns:110px 1fr} }
 </style>
 </head>
 <body>
-
-<div id="loginScreen" style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;">
-  <div style="width:100%; max-width:360px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:32px 28px;">
-    <div style="text-align:center; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:28px; letter-spacing:1px; background:linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--purple-soft)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:22px;">GHANI STUDIOZ</div>
-    <label style="font-size:12px; color:var(--text-dim);">Email
-      <input id="loginEmail" type="email" placeholder="you@example.com" style="width:100%; margin-top:6px;">
-    </label>
-    <label style="font-size:12px; color:var(--text-dim); display:block; margin:12px 0 14px;">Password
-      <input id="loginPassword" type="password" placeholder="••••••••" style="width:100%; margin-top:6px;">
-    </label>
-    <button class="btn btn-primary" id="loginBtn" style="width:100%;">Log In</button>
-    <div id="loginError" style="color:var(--red); font-size:13px; margin-top:12px; text-align:center; display:none;"></div>
-  </div>
-</div>
-
-<div id="appContent" style="display:none;">
-<div class="brand-title">GHANI STUDIOZ</div>
-<div class="sprocket-bar" id="sprocketBar"></div>
-<header style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
-  <div><div class="eyebrow">Private Client Dashboard</div><h1>Client <span>Details</span></h1></div>
-  <button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button>
-</header>
-<div class="stats">
-  <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl">Total Clients</div></div>
-  <div class="stat"><div class="num" id="statActive">0</div><div class="lbl">Active</div></div>
-</div>
-<main>
-  <div class="toolbar">
-    <input id="searchBox" type="text" placeholder="Search by name, social media name, service...">
-    <select id="filterStatus">
-      <option value="">All statuses</option>
-      <option value="Active">Active</option>
-      <option value="Completed">Completed</option>
-      <option value="On Hold">On Hold</option>
-      <option value="Cancelled">Cancelled</option>
-    </select>
-    <button class="btn btn-primary" id="addBtn">+ Add Client</button>
-  </div>
-  <div id="loadingState" class="loading">Loading clients...</div>
-  <div class="grid" id="clientGrid"></div>
-  <div class="empty" id="emptyState" style="display:none;">
-    <div class="big">No clients yet</div>
-    <div>Tap "+ Add Client" to log your first one.</div>
-  </div>
-</main>
-
-<div class="overlay" id="overlay">
-  <div class="modal">
-    <h2 id="modalTitle">Add Client</h2>
-    <div class="form-grid">
-      <label>Client ID <input id="f_id" type="text" placeholder="e.g. 002"></label>
-      <label>Name * <input id="f_name" type="text" placeholder="Client name"></label>
-      <label>Contact Number <input id="f_contact" type="text" placeholder="+92 3xx xxxxxxx"></label>
-      <label>Drive Email <input id="f_email" type="email" placeholder="name@example.com"></label>
-      <label>Social Media Name <input id="f_tiktok" type="text" placeholder="@handle"></label>
-      <label>Services
-        <select id="f_services">
-          <option>videos editing</option>
-          <option>photo editing</option>
-          <option>thumbnail design</option>
-          <option>content writing</option>
-          <option>social media management</option>
-        </select>
-      </label>
-      <label>Approach <input id="f_approach" type="text" placeholder="e.g. tiktok id ghani.phatan"></label>
-      <label>Edits Type <input id="f_edits" type="text" placeholder="e.g. informative"></label>
-      <label>Hiring Date <input id="f_hiring" type="date"></label>
-      <label>Manager Name <input id="f_manager" type="text" placeholder="Manager name"></label>
-      <label>Manager Contact <input id="f_managercontact" type="text" placeholder="+92 3xx xxxxxxx"></label>
-      <label>Status
-        <select id="f_status">
-          <option>Active</option>
-          <option>Completed</option>
-          <option>On Hold</option>
-          <option>Cancelled</option>
-        </select>
-      </label>
-      <label>Fee per Video (PKR) <input id="f_fee" type="number" placeholder="0" min="0"></label>
-      <label>Follow-up Date <input id="f_followup" type="date"></label>
-      <label class="full">Notes <textarea id="f_notes" rows="2" placeholder="Anything worth remembering"></textarea></label>
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" id="cancelBtn" type="button">Cancel</button>
-      <button class="btn btn-primary" id="saveBtn" type="button">Save Client</button>
-    </div>
-  </div>
-</div>
-
-<div class="overlay" id="videosOverlay">
-  <div class="modal videos-modal">
-    <div class="videos-modal-head">
-      <div><h2 id="videosModalTitle">Videos</h2><div class="videos-sub" id="videosModalSub"></div></div>
-      <button class="btn btn-ghost btn-small" id="videosCloseBtn" type="button">Close</button>
-    </div>
-    <div class="videos-summary" id="videosSummary"></div>
-    <div class="video-form">
-      <label class="full">Video Name <input id="v_name" type="text" placeholder="e.g. Ghani Vlog"></label>
-      <label>Date Received <input id="v_received" type="date"></label>
-      <label>Fee per Video (PKR) <input id="v_price" type="number" placeholder="e.g. 700" min="0"></label>
-      <label>How Many Videos <input id="v_count" type="number" min="1" value="1"></label>
-      <label>Videos Edited Already <input id="v_editedcount" type="number" min="0" value="0"></label>
-      <label>Completion Date <input id="v_edited" type="date"></label>
-      <button class="btn btn-primary" id="addVideoBtn" type="button">+ Add Video(s)</button>
-    </div>
-    <div class="video-list" id="videoList"></div>
-  </div>
-</div>
-
-</div>
-
+<div id="loginScreen" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px"><div style="width:100%;max-width:360px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 28px"><div style="text-align:center;font-family:'Space Grotesk';font-weight:700;font-size:28px;background:linear-gradient(135deg,#f4c884,#e8a749 45%,#a875e0);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px">GHANI STUDIOZ</div><input id="loginEmail" type="email" placeholder="Email" style="margin-bottom:10px;height:44px"><input id="loginPassword" type="password" placeholder="Password" style="margin-bottom:14px;height:44px"><button class="btn btn-primary" id="loginBtn" style="width:100%;height:44px">Log In</button><div id="loginError" style="color:#f27272;font-size:13px;margin-top:12px;display:none;text-align:center"></div></div></div>
+<div id="appContent" style="display:none"><div class="brand-title">GHANI STUDIOZ</div><div class="sprocket-wrap"><div class="sprocket-track" id="sprocketTrack"></div></div><header><div><div class="eyebrow">Private Client Dashboard</div><h1>Client <span>Portal</span></h1></div><button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button></header><div class="stats"><div class="stat"><div class="num" id="statTotal">0</div><div style="font-size:11px;color:#a89bc0">Total Clients</div></div><div class="stat"><div class="num" id="statActive">0</div><div style="font-size:11px;color:#a89bc0">Active</div></div></div><main style="max-width:1180px;margin:0 auto;padding:22px 32px 80px"><div class="toolbar"><input id="searchBox" type="text" placeholder="🔍 Search..."><select id="filterStatus"><option value="">All statuses</option><option>Active</option><option>Completed</option><option>On Hold</option><option>Cancelled</option></select><button class="btn btn-primary" id="addBtn">+ Add Client</button></div><div id="loadingState" style="text-align:center;padding:40px;color:#a89bc0">Loading...</div><div class="grid" id="clientGrid"></div></main>
+<div class="overlay" id="overlay"><div class="modal"><h2 id="modalTitle" style="font-family:'Space Grotesk';margin:0 0 18px">Add Client</h2><div class="form-grid"><label>Client ID<input id="f_id"></label><label>Name *<input id="f_name"></label><label>Contact<input id="f_contact"></label><label>Email<input id="f_email" type="email"></label><label>Social Media<input id="f_tiktok"></label><label>Services<select id="f_services"><option>videos editing</option><option>photo editing</option><option>thumbnail design</option><option>content writing</option><option>social media management</option></select></label><label>Approach<input id="f_approach"></label><label>Edits Type<input id="f_edits"></label><label>Hiring Date<input id="f_hiring" type="date"></label><label>Manager<input id="f_manager"></label><label>Manager Contact<input id="f_managercontact"></label><label>Status<select id="f_status"><option>Active</option><option>Completed</option><option>On Hold</option><option>Cancelled</option></select></label><label>Fee<input id="f_fee" type="number"></label><label>Follow-up<input id="f_followup" type="date"></label><label class="full">Notes<textarea id="f_notes" rows="2"></textarea></label></div><div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px"><button class="btn btn-ghost" id="cancelBtn">Cancel</button><button class="btn btn-primary" id="saveBtn">Save Client</button></div></div></div>
+<div class="overlay" id="videosOverlay"><div class="modal videos-modal"><div style="display:flex;justify-content:space-between;margin-bottom:14px"><div><h2 id="videosModalTitle" style="font-family:'Space Grotesk';margin:0">Videos</h2><div style="font-family:'JetBrains Mono';font-size:12px;color:var(--gold)" id="videosModalSub"></div></div><button class="btn btn-ghost btn-small" id="videosCloseBtn">Close</button></div><div class="videos-summary" id="videosSummary"></div><div class="video-form"><label style="grid-column:1/-1">Batch Name<input id="v_name" placeholder="e.g. ggg"></label><label>Date Received<input id="v_received" type="date"></label><label>Fee per Video<input id="v_price" type="number" placeholder="700"></label><label>How Many Videos<input id="v_count" type="number" value="1" min="1"></label><label>Videos Edited Already<input id="v_editedcount" type="number" value="0" min="0"></label><label>Completion Date<input id="v_edited" type="date"></label><button class="btn btn-primary" id="addBatchBtn" type="button">+ Add Batch</button></div><div class="video-list" id="videoList"></div></div></div></div>
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, browserSessionPersistence, setPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSHT3lc",
-    authDomain: "ghani-studioz.firebaseapp.com",
-    projectId: "ghani-studioz",
-    storageBucket: "ghani-studioz.firebasestorage.app",
-    messagingSenderId: "651062801971",
-    appId: "1:651062801971:web:5b34cba89803e0617b9546",
-    measurementId: "G-FNEY2YG9JZ"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const auth = getAuth(app);
-  const clientsCollection = collection(db, "clients");
-
-  // Browser band hote hi logout ke liye session persistence
-  setPersistence(auth, browserSessionPersistence).catch(console.error);
-
-  const loginScreen = document.getElementById('loginScreen');
-  const appContent = document.getElementById('appContent');
-  const loginError = document.getElementById('loginError');
-  const loadingState = document.getElementById('loadingState');
-  let unsubscribeClients = null;
-
-  document.getElementById('loginBtn').addEventListener('click', doLogin);
-  document.getElementById('loginPassword').addEventListener('keydown', (e)=>{ if(e.key === 'Enter') doLogin(); });
-
-  async function doLogin(){
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    loginError.style.display = 'none';
-    if(!email || !password){
-      loginError.textContent = 'Email aur password dono likhein.';
-      loginError.style.display = 'block';
-      return;
-    }
-    const btn = document.getElementById('loginBtn');
-    btn.disabled = true;
-    btn.textContent = 'Logging in...';
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch(e){
-      loginError.textContent = 'Login fail ho gaya. Email/password check karein.';
-      loginError.style.display = 'block';
-      console.error(e);
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Log In';
-    }
-  }
-
-  document.getElementById('logoutBtn').addEventListener('click', ()=>{
-    signOut(auth).catch(console.error);
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, browserSessionPersistence, setPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+const firebaseConfig = { apiKey:"AIzaSyA66SQH26qaRXXPCJdeif26uxkKFSHT3lc", authDomain:"ghani-studioz.firebaseapp.com", projectId:"ghani-studioz", storageBucket:"ghani-studioz.firebasestorage.app", messagingSenderId:"651062801971", appId:"1:651062801971:web:5b34cba89803e0617b9546", measurementId:"G-FNEY2YG9JZ" };
+const app = initializeApp(firebaseConfig); const db = getFirestore(app); const auth = getAuth(app); const clientsCollection = collection(db,"clients"); setPersistence(auth,browserSessionPersistence).catch(()=>{});
+const loginScreen=document.getElementById('loginScreen'), appContent=document.getElementById('appContent'), loginError=document.getElementById('loginError'), loadingState=document.getElementById('loadingState');
+let unsubscribeClients=null;
+async function doLogin(){ const e=document.getElementById('loginEmail').value.trim(), p=document.getElementById('loginPassword').value; loginError.style.display='none'; if(!e||!p){loginError.textContent='Email/password likhein';loginError.style.display='block';return} const b=document.getElementById('loginBtn'); b.disabled=true; b.textContent='Logging...'; try{await signInWithEmailAndPassword(auth,e,p)}catch(err){loginError.textContent='Login fail';loginError.style.display='block'} finally{b.disabled=false;b.textContent='Log In'} }
+document.getElementById('loginBtn').onclick=doLogin; document.getElementById('loginPassword').onkeydown=e=>{ if(e.key==='Enter') doLogin() }; document.getElementById('logoutBtn').onclick=()=>signOut(auth);
+let clients=[], editingId=null, videosClientId=null, pendingUid=null, isSaving=false;
+const grid=document.getElementById('clientGrid'), overlay=document.getElementById('overlay'), videosOverlay=document.getElementById('videosOverlay');
+function buildSprockets(){ const t=document.getElementById('sprocketTrack'); if(!t) return; t.innerHTML=''; for(let i=0;i<80;i++){ const d=document.createElement('div'); d.className='hole'; t.appendChild(d)} t.innerHTML+=t.innerHTML; } buildSprockets();
+function startClientsListener(){ if(unsubscribeClients) return; loadingState.style.display='block'; unsubscribeClients=onSnapshot(clientsCollection,s=>{ clients=[]; s.forEach(d=>{ const data=d.data(); if(data&&data.uid) clients.push(data)}); clients.sort((a,b)=>{ const na=parseInt(a.id,10), nb=parseInt(b.id,10); if(!isNaN(na)&&!isNaN(nb)) return nb-na; return String(b.id).localeCompare(String(a.id))}); loadingState.style.display='none'; render();});}
+function escapeHtml(s){ if(s==null) return ''; return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])) }
+function statusTagClass(s){ return {'Active':'tag-active','Completed':'tag-completed','On Hold':'tag-hold','Cancelled':'tag-cancelled'}[s]||'tag-active' }
+function nextId(){ const n=clients.map(c=>parseInt(c.id,10)).filter(x=>!isNaN(x)); return String((n.length?Math.max(...n):0)+1).padStart(3,'0') }
+function render(){
+  const q=document.getElementById('searchBox').value.trim().toLowerCase(), f=document.getElementById('filterStatus').value;
+  const filtered=clients.filter(c=>{ const txt=[c.name,c.tiktok,c.services,c.id,c.contact].join(' ').toLowerCase(); return (!q||txt.includes(q)) && (!f||c.status===f) });
+  grid.innerHTML=''; const add=document.createElement('div'); add.className='card add-tile'; add.innerHTML=`<div style="font-size:38px;color:var(--gold)">+</div><div style="font-size:13px;color:#a89bc0">New Client</div>`; add.onclick=()=>openModal(null); grid.appendChild(add);
+  filtered.forEach(c=>{
+    const card=document.createElement('div'); card.className='card';
+    card.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div><div style="font-family:'JetBrains Mono';font-size:11px;color:var(--gold)">#${escapeHtml(c.id)}</div><div style="font-family:'Space Grotesk';font-size:19px;font-weight:700">${escapeHtml(c.name)}</div></div><span class="tag ${statusTagClass(c.status)}">${escapeHtml(c.status)}</span></div>
+      <div class="field-row"><span class="k">Contact</span><span class="v">${escapeHtml(c.contact)||'—'}</span></div>
+      <div class="field-row"><span class="k">Social Media</span><span class="v">${escapeHtml(c.tiktok)||'—'}</span></div>
+      <div class="field-row"><span class="k">Email</span><span class="v">${escapeHtml(c.email)||'—'}</span></div>
+      <div class="field-row"><span class="k">Fee per Video</span><span class="v">PKR ${Number(c.fee||0).toLocaleString()}</span></div>
+      <div class="field-row"><span class="k">Services</span><span class="v">${escapeHtml(c.services)||'—'}</span></div>
+      <div class="field-row"><span class="k">Edits Type</span><span class="v">${escapeHtml(c.edits)||'—'}</span></div>
+      <div class="field-row"><span class="k">Approach</span><span class="v">${escapeHtml(c.approach)||'—'}</span></div>
+      <div class="field-row"><span class="k">Hiring Date</span><span class="v">${escapeHtml(c.hiring)||'—'}</span></div>
+      <div class="field-row"><span class="k">Manager</span><span class="v">${escapeHtml(c.manager)||'—'}</span></div>
+      <div class="field-row"><span class="k">Manager Contact</span><span class="v">${escapeHtml(c.managercontact)||'—'}</span></div>
+      <div class="field-row"><span class="k">Follow-up</span><span class="v">${escapeHtml(c.followup)||'—'}</span></div>
+      ${c.notes?`<div class="field-row"><span class="k">Notes</span><span class="v">${escapeHtml(c.notes)}</span></div>`:''}
+      <button class="videos-btn" data-videos="${c.uid}">🎬 Videos <span style="background:#a875e0;color:#1a1029;padding:1px 8px;border-radius:20px;font-size:11px">${(c.videos||[]).reduce((s,b)=>s+Number(b.count||0),0)}</span></button>
+      <div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-ghost btn-small" data-edit="${c.uid}">Edit</button><button class="btn btn-danger btn-small" data-del="${c.uid}">Delete</button></div>`;
+    grid.appendChild(card);
   });
-
-  let clients = [];
-  let editingId = null;
-  let videosClientId = null;
-  let pendingUid = null;
-  let isSaving = false;
-
-  const grid = document.getElementById('clientGrid');
-  const emptyState = document.getElementById('emptyState');
-  const overlay = document.getElementById('overlay');
-
-  function buildSprockets(){
-    const bar = document.getElementById('sprocketBar');
-    const count = Math.ceil(window.innerWidth / 30);
-    bar.innerHTML = '';
-    for(let i=0;i<count;i++){
-      const d = document.createElement('div');
-      d.className = 'hole';
-      bar.appendChild(d);
-    }
-  }
-  buildSprockets();
-  let resizeTimeout;
-  window.addEventListener('resize', ()=>{
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(buildSprockets, 200);
-  });
-
-  function startClientsListener(){
-    if(unsubscribeClients) return;
-    loadingState.style.display = 'block';
-    unsubscribeClients = onSnapshot(clientsCollection, (snapshot) => {
-      clients = [];
-      snapshot.forEach((doc) => {
-        const data = doc.data();
-        if(data && data.uid) clients.push(data);
-      });
-      clients.sort((a, b) => {
-        const na = parseInt(a.id, 10);
-        const nb = parseInt(b.id, 10);
-        if(!isNaN(na) && !isNaN(nb)) return nb - na;
-        return String(b.id).localeCompare(String(a.id));
-      });
-      loadingState.style.display = 'none';
-      render();
-    }, (error) => {
-      loadingState.textContent = 'Error loading data. Check Firestore Rules.';
-      console.error("Firestore loading error: ", error);
-    });
-  }
-
-  function statusTagClass(status){
-    return {
-      'Active':'tag-active',
-      'Completed':'tag-completed',
-      'On Hold':'tag-hold',
-      'Cancelled':'tag-cancelled'
-    }[status] || 'tag-active';
-  }
-
-  function render(){
-    const q = document.getElementById('searchBox').value.trim().toLowerCase();
-    const filterStatus = document.getElementById('filterStatus').value;
-    const filtered = clients.filter(c=>{
-      const searchText = [c.name, c.tiktok, c.services, c.approach, c.manager, c.id].map(x=>x||'').join(' ').toLowerCase();
-      const matchesQ = !q || searchText.includes(q);
-      const matchesStatus = !filterStatus || c.status === filterStatus;
-      return matchesQ && matchesStatus;
-    });
-
-    grid.innerHTML = '';
-    emptyState.style.display = filtered.length ? 'none' : 'block';
-
-    const addTile = document.createElement('div');
-    addTile.className = 'card add-tile';
-    addTile.innerHTML = `<div class="plus-icon">+</div><div class="add-label">New Client</div>`;
-    addTile.addEventListener('click', ()=>openModal(null));
-    grid.appendChild(addTile);
-
-    filtered.forEach(c=>{
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <div class="card-top">
-          <div>
-            <div class="cid">#${escapeHtml(c.id)}</div>
-            <div class="cname">${escapeHtml(c.name)}</div>
-          </div>
-          <span class="tag ${statusTagClass(c.status)}">${escapeHtml(c.status)}</span>
+  grid.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.edit)));
+  grid.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>deleteClient(b.dataset.del)));
+  grid.querySelectorAll('[data-videos]').forEach(b=>b.addEventListener('click',()=>openVideosModal(b.dataset.videos)));
+  document.getElementById('statTotal').textContent=clients.length;
+  document.getElementById('statActive').textContent=clients.filter(c=>c.status==='Active').length;
+}
+function openModal(uid){ pendingUid=null; editingId=uid||null; const c=uid?clients.find(x=>x.uid===uid):null; document.getElementById('f_id').value=c?c.id:nextId(); document.getElementById('f_name').value=c?c.name:''; document.getElementById('f_contact').value=c?c.contact:''; document.getElementById('f_email').value=c?c.email:''; document.getElementById('f_fee').value=c?c.fee:''; document.getElementById('f_tiktok').value=c?c.tiktok:''; document.getElementById('f_services').value=c?c.services:'videos editing'; document.getElementById('f_approach').value=c?c.approach:''; document.getElementById('f_edits').value=c?c.edits:''; document.getElementById('f_hiring').value=c?(c.hiring?.includes('/')?'':c.hiring):''; document.getElementById('f_manager').value=c?c.manager:''; document.getElementById('f_managercontact').value=c?c.managercontact:''; document.getElementById('f_status').value=c?c.status:'Active'; document.getElementById('f_followup').value=c?(c.followup?.includes('/')?'':c.followup):''; document.getElementById('f_notes').value=c?c.notes:''; overlay.classList.add('show'); }
+function closeModal(){ overlay.classList.remove('show'); editingId=null; pendingUid=null }
+async function deleteClient(uid){ if(!confirm('Delete client?')) return; try{ await deleteDoc(doc(db,"clients",uid)) }catch(e){ alert('Delete failed') } }
+document.getElementById('addBtn').onclick=()=>openModal(null); document.getElementById('cancelBtn').onclick=closeModal; overlay.onclick=e=>{ if(e.target===overlay) closeModal() }
+document.getElementById('saveBtn').onclick=async()=>{ if(isSaving) return; const name=document.getElementById('f_name').value.trim(); if(!name){ alert('Name required'); return } isSaving=true; const btn=document.getElementById('saveBtn'); btn.disabled=true; btn.textContent='Saving...'; if(!editingId&&!pendingUid) pendingUid='c_'+Date.now()+'_'+Math.random().toString(36).slice(2,5); const uid=editingId||pendingUid; const existing=editingId?clients.find(c=>c.uid===editingId):null; const data={ uid, id:document.getElementById('f_id').value.trim()||nextId(), name, contact:document.getElementById('f_contact').value.trim(), email:document.getElementById('f_email').value.trim(), fee:document.getElementById('f_fee').value||"0", tiktok:document.getElementById('f_tiktok').value.trim(), services:document.getElementById('f_services').value, approach:document.getElementById('f_approach').value.trim(), edits:document.getElementById('f_edits').value.trim(), hiring:document.getElementById('f_hiring').value.trim(), manager:document.getElementById('f_manager').value.trim(), managercontact:document.getElementById('f_managercontact').value.trim(), status:document.getElementById('f_status').value, followup:document.getElementById('f_followup').value.trim(), notes:document.getElementById('f_notes').value.trim(), videos:existing?existing.videos||[]:[] }; try{ await setDoc(doc(db,"clients",uid),data,{merge:true}); pendingUid=null; closeModal() }catch(e){ alert('Save failed') } finally{ isSaving=false; btn.disabled=false; btn.textContent='Save Client' } }
+document.getElementById('searchBox').oninput=render; document.getElementById('filterStatus').onchange=render;
+function openVideosModal(uid){ videosClientId=uid; const c=clients.find(x=>x.uid===uid); if(!c) return; document.getElementById('videosModalTitle').textContent=`${c.name}'s Videos`; document.getElementById('videosModalSub').textContent=`#${c.id} · ${c.services||''}`; document.getElementById('v_name').value=''; document.getElementById('v_received').value=''; document.getElementById('v_count').value='1'; document.getElementById('v_editedcount').value='0'; document.getElementById('v_edited').value=''; document.getElementById('v_price').value=c.fee||''; renderVideoList(); videosOverlay.classList.add('show'); }
+function closeVideosModal(){ videosOverlay.classList.remove('show'); videosClientId=null }
+function renderVideoList(){
+  const c=clients.find(x=>x.uid===videosClientId); if(!c) return;
+  const batches=c.videos||[]; 
+  const totalVideos=batches.reduce((s,b)=>s+Number(b.count||0),0); 
+  const totalEdited=batches.reduce((s,b)=>s+Math.min(Number(b.editedCount||0),Number(b.count||0)),0); 
+  const totalPrice=batches.reduce((s,b)=>s+Number(b.count||0)*Number(b.price||0),0);
+  document.getElementById('videosSummary').innerHTML=`<div class="vs-box"><div class="vs-num">${totalVideos}</div><div style="font-size:11px;color:#a89bc0">TOTAL</div></div><div class="vs-box"><div class="vs-num">${totalEdited}</div><div style="font-size:11px;color:#a89bc0">EDITED</div></div><div class="vs-box"><div class="vs-num">PKR ${totalPrice.toLocaleString()}</div><div style="font-size:11px;color:#a89bc0">VALUE</div></div>`;
+  const list=document.getElementById('videoList');
+  if(!batches.length){ list.innerHTML=`<div style="text-align:center;padding:30px;color:#a89bc0">No batches yet. Add your first batch above.</div>`; return }
+  list.innerHTML=batches.map((b,i)=>batches.length-1-i).map(origIdx=>{
+    const b=batches[origIdx]; const count=Number(b.count||0), editedCount=Math.min(Number(b.editedCount||0),count), isDone=count-editedCount===0, batchTotal=count*Number(b.price||0); const subVideos=b.subVideos||[];
+    return `<div class="video-item" id="batch_${origIdx}"><div style="display:flex;justify-content:space-between;gap:10px"><div style="font-size:13px"><div><span style="color:#a89bc0">Name:</span> <b>${escapeHtml(b.name||'—')}</b> <span style="color:#a89bc0">Batch: ${count} videos</span></div><div><span style="color:#a89bc0">Received:</span> ${escapeHtml(b.received||'—')} <span style="color:#a89bc0">· Edited:</span> <span style="color:${isDone?'#4ade80':'#e8a749'}">${editedCount}/${count}</span></div><div><span style="color:#a89bc0">Completed:</span> ${escapeHtml(b.edited||'Not yet')} · PKR ${batchTotal.toLocaleString()}</div></div><div style="display:flex;gap:6px"><button type="button" class="more-btn" data-toggle="${origIdx}">More Details ▼</button><button type="button" class="btn btn-danger btn-small" data-delete-batch="${origIdx}">Delete</button></div></div>
+      <div class="sub-videos" id="sub_${origIdx}">
+        <div style="font-size:12px;color:#a875e0;font-weight:700;margin-bottom:8px">✏️ Edit Batch Info</div>
+        <div class="batch-edit-form">
+          <label>Batch Name<input id="be_name_${origIdx}" value="${escapeHtml(b.name||'')}"></label>
+          <label>Date Received<input id="be_received_${origIdx}" type="date" value="${escapeHtml(b.received||'')}"></label>
+          <label>Fee per Video<input id="be_price_${origIdx}" type="number" value="${escapeHtml(b.price||'')}"></label>
+          <label>Completion Date<input id="be_edited_${origIdx}" type="date" value="${escapeHtml(b.edited||'')}"></label>
+          <div style="grid-column:1/-1;display:flex;gap:8px"><button type="button" class="btn btn-primary btn-small" data-save-batch="${origIdx}">Save Batch</button><span style="font-size:11px;color:#a89bc0;align-self:center">Batch ka naam/date/fee yahan se edit</span></div>
         </div>
-        <div class="field-row"><span class="k">Contact</span><span class="v">${escapeHtml(c.contact)||'—'}</span></div>
-        <div class="field-row"><span class="k">Social Media</span><span class="v">${escapeHtml(c.tiktok)||'—'}</span></div>
-        <div class="field-row"><span class="k">Email</span><span class="v">${escapeHtml(c.email)||'—'}</span></div>
-        <div class="field-row"><span class="k">Fee per Video</span><span class="v">PKR ${Number(c.fee||0).toLocaleString()}</span></div>
-        <div class="field-row"><span class="k">Services</span><span class="v">${escapeHtml(c.services)||'—'}</span></div>
-        <div class="field-row"><span class="k">Edits Type</span><span class="v">${escapeHtml(c.edits)||'—'}</span></div>
-        <div class="field-row"><span class="k">Hiring Date</span><span class="v">${escapeHtml(c.hiring)||'—'}</span></div>
-        <div class="field-row"><span class="k">Manager</span><span class="v">${escapeHtml(c.manager||'—')}</span></div>
-        <div class="field-row"><span class="k">Follow-up</span><span class="v">${escapeHtml(c.followup||'—')}</span></div>
-        ${c.notes ? `<div class="field-row"><span class="k">Notes</span><span class="v">${escapeHtml(c.notes)}</span></div>` : ''}
-        <button class="videos-btn" data-videos="${escapeHtml(c.uid)}">
-          🎬 Videos <span class="vcount">${(c.videos||[]).reduce((s,b)=>s+Number(b.count||0),0)}</span>
-        </button>
-        <div class="card-actions">
-          <button class="btn btn-ghost btn-small edit-btn-trigger" data-edit="${escapeHtml(c.uid)}">Edit</button>
-          <button class="btn btn-danger btn-small" data-del="${escapeHtml(c.uid)}">Delete</button>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+        <div style="display:flex;justify-content:space-between;margin:12px 0 8px"><div style="font-weight:600;font-size:13px">Individual Videos</div><button type="button" class="btn btn-primary btn-small" data-save-details="${origIdx}">Save Details</button></div>
+        ${Array.from({length:count}).map((_,vi)=>{ const sv=subVideos[vi]||{}; return `<div class="sub-row"><div style="color:var(--gold);font-weight:700;text-align:center">#${vi+1}</div><input id="sv_name_${origIdx}_${vi}" value="${escapeHtml(sv.name|| (b.name? b.name+' '+(vi+1):''))}" placeholder="Title"><input id="sv_date_${origIdx}_${vi}" type="date" value="${escapeHtml(sv.completionDate||'')}"><input id="sv_link_${origIdx}_${vi}" type="url" placeholder="https://..." value="${escapeHtml(sv.link||'')}"><div>${sv.link?`<a href="${escapeHtml(sv.link)}" target="_blank" style="background:#8a4fc9;color:white;padding:5px 8px;border-radius:6px;text-decoration:none;font-size:11px;display:block;text-align:center">Open</a>`:'<span style="font-size:10px;color:#a89bc0">No link</span>'}</div></div>` }).join('')}
+      </div></div>`;
+  }).join('');
 
-    document.querySelectorAll('.edit-btn-trigger').forEach(b=>{
-      b.onclick = (e) => { e.preventDefault(); openModal(b.getAttribute('data-edit')); };
-    });
-    document.querySelectorAll('[data-del]').forEach(b=>{
-      b.onclick = (e) => { e.preventDefault(); deleteClient(b.getAttribute('data-del')); };
-    });
-    document.querySelectorAll('[data-videos]').forEach(b=>{
-      b.onclick = (e) => { e.preventDefault(); openVideosModal(b.getAttribute('data-videos')); };
-    });
-    updateStats();
-  }
-
-  function escapeHtml(str){
-    if(str === undefined || str === null) return '';
-    return String(str).replace(/[&<>"']/g, m=>({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-    }[m]));
-  }
-
-  function updateStats(){
-    document.getElementById('statTotal').textContent = clients.length;
-    document.getElementById('statActive').textContent = clients.filter(c=>c.status==='Active').length;
-  }
-
-  function openModal(uid){
-    pendingUid = null;
-    editingId = uid || null;
-    document.getElementById('modalTitle').textContent = uid ? 'Edit Client' : 'Add Client';
-    const c = uid ? clients.find(x=>x.uid===uid) : null;
-    document.getElementById('f_id').value = c ? c.id : nextId();
-    document.getElementById('f_name').value = c ? c.name : '';
-    document.getElementById('f_contact').value = c ? c.contact : '';
-    document.getElementById('f_email').value = c ? c.email : '';
-    document.getElementById('f_fee').value = c ? c.fee : '';
-    document.getElementById('f_tiktok').value = c ? c.tiktok : '';
-    document.getElementById('f_services').value = c ? c.services : 'videos editing';
-    document.getElementById('f_approach').value = c ? c.approach : '';
-    document.getElementById('f_edits').value = c ? c.edits : '';
-    document.getElementById('f_hiring').value = c ? (c.hiring && c.hiring.includes('/') ? '' : c.hiring) : '';
-    document.getElementById('f_manager').value = c ? c.manager : '';
-    document.getElementById('f_managercontact').value = c ? c.managercontact : '';
-    document.getElementById('f_status').value = c ? c.status : 'Active';
-    document.getElementById('f_followup').value = c ? (c.followup && c.followup.includes('/') ? '' : c.followup) : '';
-    document.getElementById('f_notes').value = c ? c.notes : '';
-    overlay.classList.add('show');
-  }
-
-  function nextId(){
-    const nums = clients.map(c=>parseInt(c.id,10)).filter(n=>!isNaN(n));
-    const next = (nums.length ? Math.max(...nums) : 0) + 1;
-    return String(next).padStart(3,'0');
-  }
-
-  function closeModal(){
-    overlay.classList.remove('show');
-    editingId = null;
-    pendingUid = null;
-  }
-
-  async function deleteClient(uid){
-    if(!confirm('Delete this client?')) return;
-    try {
-      await deleteDoc(doc(db, "clients", uid));
-    } catch(e) {
-      alert("Delete failed. Check Firestore Rules.");
-      console.error(e);
-    }
-  }
-
-  document.getElementById('addBtn').addEventListener('click', ()=>openModal(null));
-  document.getElementById('cancelBtn').addEventListener('click', closeModal);
-  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeModal(); closeVideosModal(); } });
-
-  document.getElementById('saveBtn').addEventListener('click', async ()=>{
-    if(isSaving) return;
-    const name = document.getElementById('f_name').value.trim();
-    if(!name){ alert('Name is required'); return; }
-    const saveBtn = document.getElementById('saveBtn');
-    isSaving = true;
-    saveBtn.disabled = true;
-    saveBtn.textContent = 'Saving...';
-    if(!editingId && !pendingUid){
-      pendingUid = 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
-    }
-    const uid = editingId ? editingId : pendingUid;
-    const existingClient = editingId ? clients.find(c => c.uid === editingId) : null;
-    const data = {
-      uid: uid,
-      id: document.getElementById('f_id').value.trim() || nextId(),
-      name,
-      contact: document.getElementById('f_contact').value.trim(),
-      email: document.getElementById('f_email').value.trim(),
-      fee: document.getElementById('f_fee').value || "0",
-      tiktok: document.getElementById('f_tiktok').value.trim(),
-      services: document.getElementById('f_services').value,
-      approach: document.getElementById('f_approach').value.trim(),
-      edits: document.getElementById('f_edits').value.trim(),
-      hiring: document.getElementById('f_hiring').value.trim(),
-      manager: document.getElementById('f_manager').value.trim(),
-      managercontact: document.getElementById('f_managercontact').value.trim(),
-      status: document.getElementById('f_status').value,
-      followup: document.getElementById('f_followup').value.trim(),
-      notes: document.getElementById('f_notes').value.trim(),
-      videos: existingClient ? (existingClient.videos || []) : []
-    };
-    try {
-      await setDoc(doc(db, "clients", uid), data, { merge: true });
-      pendingUid = null;
-      closeModal();
-    } catch(e) {
-      alert("Database error saving client. Rules check karo.");
-      console.error(e);
-    } finally {
-      isSaving = false;
-      saveBtn.disabled = false;
-      saveBtn.textContent = 'Save';
-    }
-  });
-
-  document.getElementById('searchBox').addEventListener('input', render);
-  document.getElementById('filterStatus').addEventListener('change', render);
-
-  const videosOverlay = document.getElementById('videosOverlay');
-  function openVideosModal(uid){
-    videosClientId = uid;
-    const c = clients.find(x=>x.uid===uid);
-    if(!c) return;
-    document.getElementById('videosModalTitle').textContent = `${c.name}'s Videos`;
-    document.getElementById('videosModalSub').textContent = `#${c.id} · ${c.services || ''}`;
-    document.getElementById('v_name').value = '';
-    document.getElementById('v_received').value = '';
-    document.getElementById('v_count').value = '1';
-    document.getElementById('v_editedcount').value = '0';
-    document.getElementById('v_edited').value = '';
-    document.getElementById('v_price').value = c.fee || '';
-    renderVideoList();
-    videosOverlay.classList.add('show');
-  }
-  function closeVideosModal(){
-    videosOverlay.classList.remove('show');
-    videosClientId = null;
-  }
-  function renderVideoList(){
-    const c = clients.find(x=>x.uid===videosClientId);
-    if(!c) return;
-    const batches = c.videos || [];
-    const totalVideos = batches.reduce((s,b)=>s+Number(b.count||0),0);
-    const totalEdited = batches.reduce((s,b)=>s+Math.min(Number(b.editedCount||0), Number(b.count||0)),0);
-    const totalPrice = batches.reduce((s,b)=>s+Number(b.count||0)*Number(b.price||0),0);
-    document.getElementById('videosSummary').innerHTML = `
-      <div class="vs-box"><div class="vs-num">${totalVideos}</div><div class="vs-lbl">Total Videos</div></div>
-      <div class="vs-box"><div class="vs-num">${totalEdited}</div><div class="vs-lbl">Edited</div></div>
-      <div class="vs-box"><div class="vs-num">PKR ${totalPrice.toLocaleString()}</div><div class="vs-lbl">Total Value</div></div>
-    `;
-    const list = document.getElementById('videoList');
-    if(!batches.length){
-      list.innerHTML = `<div class="video-empty">No batches logged yet. Add the first one above.</div>`;
-      return;
-    }
-    const sorted = batches.map((b,i)=>({...b, _idx:i})).slice().reverse();
-    list.innerHTML = sorted.map(b=>{
-      const count = Number(b.count||0);
-      const editedCount = Math.min(Number(b.editedCount||0), count);
-      const pending = count - editedCount;
-      const batchTotal = count * Number(b.price||0);
-      const isDone = pending === 0;
-      return `
-      <div class="video-item">
-        <div class="vi-details">
-          <div class="row"><span class="k">Name:</span> <span>${escapeHtml(b.name || '—')}</span></div>
-          <div class="row"><span class="k">Received:</span> <span>${escapeHtml(b.received || '—')}</span> <span class="k">· Batch size:</span> <span>${count} videos</span></div>
-          <div class="row">
-            <span class="k">Edited:</span>
-            <span class="${isDone ? 'status-done' : 'status-pending'}">${editedCount}/${count}${isDone ? ' · Done' : ' · ' + pending + ' pending'}</span>
-          </div>
-          <div class="row">
-            <span class="k">Completed:</span>
-            <span class="${b.edited ? 'status-done' : 'status-pending'}">${b.edited ? escapeHtml(b.edited) : 'Not yet'}</span>
-            <span class="k">· Value:</span> <span>PKR ${batchTotal.toLocaleString()} (@${Number(b.price||0).toLocaleString()}/video)</span>
-          </div>
-        </div>
-        <button class="btn btn-danger btn-small" data-delvideo="${b._idx}">Delete</button>
-      </div>
-    `;}).join('');
-    list.querySelectorAll('[data-delvideo]').forEach(b=>{
-      b.onclick = async (e)=>{
-        e.preventDefault();
-        const idx = Number(b.getAttribute('data-delvideo'));
-        if(!confirm('Delete this batch?')) return;
-        c.videos = c.videos.filter((_, i) => i !== idx);
-        try {
-          await setDoc(doc(db, "clients", c.uid), c, { merge: true });
-          renderVideoList();
-        } catch(err) {
-          alert("Delete failed");
-          console.error(err);
-        }
-      };
-    });
-  }
-  document.getElementById('addVideoBtn').addEventListener('click', async ()=>{
-    const c = clients.find(x=>x.uid===videosClientId);
-    if(!c) return;
-    const vname = document.getElementById('v_name').value.trim();
-    const received = document.getElementById('v_received').value.trim();
-    const count = document.getElementById('v_count').value;
-    const price = document.getElementById('v_price').value;
-    const editedCount = document.getElementById('v_editedcount').value || 0;
-    const edited = document.getElementById('v_edited').value.trim();
-    if(!received){ alert('Please enter the date the batch was received'); return; }
-    if(!count || Number(count) < 1){ alert('Please enter how many videos are in this batch'); return; }
-    if(!c.videos) c.videos = [];
-    c.videos.push({ name: vname, received, count, price: price||c.fee||0, editedCount, edited });
-    try {
-      await setDoc(doc(db, "clients", c.uid), c, { merge: true });
-      document.getElementById('v_name').value = '';
-      document.getElementById('v_received').value = '';
-      document.getElementById('v_count').value = '1';
-      document.getElementById('v_editedcount').value = '0';
-      document.getElementById('v_edited').value = '';
-      document.getElementById('v_price').value = c.fee || '';
-      renderVideoList();
-    } catch(e) {
-      alert("Error saving video batch.");
-      console.error(e);
-    }
-  });
-  document.getElementById('videosCloseBtn').addEventListener('click', closeVideosModal);
-  videosOverlay.addEventListener('click', (e)=>{ if(e.target === videosOverlay) closeVideosModal(); });
-
-  /* ---------- AUTO LOGOUT SYSTEM ---------- */
-  let inactivityTimer = null;
-  const INACTIVITY_LIMIT = 15 * 60 * 1000; // 15 minutes
-
-  function resetInactivityTimer(){
-    clearTimeout(inactivityTimer);
-    if(auth.currentUser){
-      inactivityTimer = setTimeout(async () => {
-        alert('15 minute se inactive thay, security ke liye auto logout kar diya gaya.');
-        try { await signOut(auth); } catch(e){ console.error(e); }
-      }, INACTIVITY_LIMIT);
-    }
-  }
-
-  function startInactivityWatcher(){
-    const events = ['mousemove','mousedown','keydown','click','scroll','touchstart'];
-    events.forEach(evt => window.addEventListener(evt, resetInactivityTimer, { passive: true }));
-    resetInactivityTimer();
-  }
-
-  function stopInactivityWatcher(){
-    clearTimeout(inactivityTimer);
-    const events = ['mousemove','mousedown','keydown','click','scroll','touchstart'];
-    events.forEach(evt => window.removeEventListener(evt, resetInactivityTimer));
-  }
-
-  let authWatcherInitialized = false;
-  const originalOnAuth = onAuthStateChanged;
-  // main auth listener for app + auto logout
-  onAuthStateChanged(auth, (user) => {
-    if(user){
-      loginScreen.style.display = 'none';
-      appContent.style.display = 'block';
-      startClientsListener();
-      startInactivityWatcher();
-    } else {
-      loginScreen.style.display = 'flex';
-      appContent.style.display = 'none';
-      stopInactivityWatcher();
-      if(unsubscribeClients){ unsubscribeClients(); unsubscribeClients = null; }
-    }
-  });
-
+  list.querySelectorAll('[data-toggle]').forEach(btn=>btn.addEventListener('click',e=>{ e.stopPropagation(); const idx=btn.getAttribute('data-toggle'); const el=document.getElementById('sub_'+idx); const parent=document.getElementById('batch_'+idx); if(el){ el.classList.toggle('show'); parent?.classList.toggle('expanded'); } }));
+  list.querySelectorAll('[data-delete-batch]').forEach(btn=>btn.addEventListener('click',async e=>{ e.stopPropagation(); const idx=Number(btn.getAttribute('data-delete-batch')); if(!confirm('Delete this batch?')) return; const c2=clients.find(x=>x.uid===videosClientId); if(!c2) return; c2.videos=c2.videos.filter((_,i)=>i!==idx); try{ await setDoc(doc(db,"clients",c2.uid),c2,{merge:true}); renderVideoList(); }catch(err){ alert('Delete failed'); console.error(err) } }));
+  list.querySelectorAll('[data-save-batch]').forEach(btn=>btn.addEventListener('click',async e=>{ e.stopPropagation(); const idx=Number(btn.getAttribute('data-save-batch')); const c2=clients.find(x=>x.uid===videosClientId); if(!c2) return; const batch=c2.videos[idx]; if(!batch) return; batch.name=document.getElementById(`be_name_${idx}`)?.value.trim()||batch.name; batch.received=document.getElementById(`be_received_${idx}`)?.value.trim()||batch.received; batch.price=document.getElementById(`be_price_${idx}`)?.value.trim()||batch.price; batch.edited=document.getElementById(`be_edited_${idx}`)?.value.trim()||batch.edited; try{ await setDoc(doc(db,"clients",c2.uid),c2,{merge:true}); alert('Batch Updated ✅'); renderVideoList(); setTimeout(()=>{ document.getElementById(`sub_${idx}`)?.classList.add('show') },100) }catch(err){ alert('Save failed') } }));
+  list.querySelectorAll('[data-save-details]').forEach(btn=>btn.addEventListener('click',async e=>{ e.stopPropagation(); const idx=Number(btn.getAttribute('data-save-details')); const c2=clients.find(x=>x.uid===videosClientId); if(!c2) return; const batch=c2.videos[idx]; const count=Number(batch.count||0); const subs=[]; for(let vi=0;vi<count;vi++){ const n=document.getElementById(`sv_name_${idx}_${vi}`), d=document.getElementById(`sv_date_${idx}_${vi}`), l=document.getElementById(`sv_link_${idx}_${vi}`); subs.push({ index:vi, name:n?.value.trim()||'', completionDate:d?.value.trim()||'', link:l?.value.trim()||'', updatedAt:new Date().toISOString() }) } batch.subVideos=subs; batch.editedCount=subs.filter(s=>s.completionDate).length; try{ await setDoc(doc(db,"clients",c2.uid),c2,{merge:true}); alert('Details Saved ✅'); renderVideoList(); setTimeout(()=>{ document.getElementById(`sub_${idx}`)?.classList.add('show') },100) }catch(err){ alert('Save failed') } }));
+}
+document.getElementById('addBatchBtn').addEventListener('click',async()=>{
+  const btn=document.getElementById('addBatchBtn'); if(btn.disabled) return;
+  const c=clients.find(x=>x.uid===videosClientId); if(!c){ alert('No client'); return }
+  const vname=document.getElementById('v_name').value.trim(), rec=document.getElementById('v_received').value.trim(), cnt=document.getElementById('v_count').value, price=document.getElementById('v_price').value, ec=document.getElementById('v_editedcount').value||0, ed=document.getElementById('v_edited').value.trim();
+  if(!rec){ alert('Date Received likhein'); return } if(!cnt||Number(cnt)<1){ alert('How Many Videos likhein'); return }
+  btn.disabled=true; btn.textContent='Adding...'; if(!c.videos) c.videos=[]; const subs=Array.from({length:Number(cnt)}).map((_,i)=>({ index:i, name: vname?`${vname} ${i+1}`:`Video ${i+1}`, completionDate:'', link:'', updatedAt:'' })); c.videos.push({ name:vname||'Batch', received:rec, count:cnt, price:price||c.fee||0, editedCount:ec, edited:ed, subVideos:subs, createdAt:new Date().toISOString() });
+  try{ await setDoc(doc(db,"clients",c.uid),c,{merge:true}); document.getElementById('v_name').value=''; document.getElementById('v_received').value=''; document.getElementById('v_count').value='1'; document.getElementById('v_editedcount').value='0'; document.getElementById('v_edited').value=''; renderVideoList(); }catch(e){ alert('Error: '+e.message); console.error(e) } finally{ btn.disabled=false; btn.textContent='+ Add Batch' }
+});
+document.getElementById('videosCloseBtn').onclick=closeVideosModal; videosOverlay.onclick=e=>{ if(e.target===videosOverlay) closeVideosModal() }
+let inactivityTimer=null; const LIMIT=15*60*1000; function resetTimer(){ clearTimeout(inactivityTimer); if(auth.currentUser){ inactivityTimer=setTimeout(async()=>{ alert('15 min inactive, auto logout'); await signOut(auth).catch(()=>{}) },LIMIT) } } function startWatcher(){ ['mousemove','mousedown','keydown','click','scroll','touchstart'].forEach(ev=>window.addEventListener(ev,resetTimer,{passive:true})); resetTimer() } function stopWatcher(){ clearTimeout(inactivityTimer); ['mousemove','mousedown','keydown','click','scroll','touchstart'].forEach(ev=>window.removeEventListener(ev,resetTimer)) }
+onAuthStateChanged(auth,user=>{ if(user){ loginScreen.style.display='none'; appContent.style.display='block'; startClientsListener(); startWatcher(); } else { loginScreen.style.display='flex'; appContent.style.display='none'; stopWatcher(); if(unsubscribeClients){unsubscribeClients(); unsubscribeClients=null} } });
 </script>
 </body>
 </html>
