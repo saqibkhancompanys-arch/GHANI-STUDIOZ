@@ -16,9 +16,16 @@
   header{padding:24px 32px 12px;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
   h1{font-family:'Space Grotesk';font-size:36px;font-weight:700;margin:0} h1 span{color:var(--gold)}
   .eyebrow{font-family:'JetBrains Mono';font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
-  .stats{max-width:1180px;margin:18px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .stats{max-width:1180px;margin:18px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
   .stat .num{font-family:'Space Grotesk';font-size:28px;font-weight:700}
+  .stat.clickable{cursor:pointer;transition:border-color .15s} .stat.clickable:hover{border-color:var(--gold)}
+  @media(max-width:700px){ .stats{grid-template-columns:1fr 1fr} }
+  .income-modal{max-width:480px}
+  .income-row{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;margin-bottom:8px;font-size:13px}
+  .income-row .m{color:var(--text-dim);font-family:'JetBrains Mono';font-size:12px}
+  .income-row .v{font-family:'Space Grotesk';font-weight:700;color:var(--gold)}
+  .income-row.current{border-color:var(--gold)}
   /* TOOLBAR FIXED - OPEN LAYOUT */
   .toolbar{
     display:grid;
@@ -52,7 +59,8 @@
   .btn-danger{background:transparent;color:var(--red);border:1px solid rgba(242,114,114,.35)}
   .btn-small{padding:6px 12px;font-size:12px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;overflow:hidden}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+  .card:hover{border-color:var(--gold);box-shadow:0 0 16px rgba(232,167,73,0.25)}
   .add-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:2px dashed var(--line);background:transparent;cursor:pointer;min-height:240px}
   .field-row{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:center;font-size:13px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
   .field-row .k{color:var(--text-dim);font-weight:500;white-space:nowrap}
@@ -80,8 +88,9 @@
 </head>
 <body>
 <div id="loginScreen" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px"><div style="width:100%;max-width:360px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 28px"><div style="text-align:center;font-family:'Space Grotesk';font-weight:700;font-size:28px;background:linear-gradient(135deg,#f4c884,#e8a749 45%,#a875e0);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px">GHANI STUDIOZ</div><input id="loginEmail" type="email" placeholder="Email" style="margin-bottom:10px;height:44px"><input id="loginPassword" type="password" placeholder="Password" style="margin-bottom:14px;height:44px"><button class="btn btn-primary" id="loginBtn" style="width:100%;height:44px">Log In</button><div id="loginError" style="color:#f27272;font-size:13px;margin-top:12px;display:none;text-align:center"></div></div></div>
-<div id="appContent" style="display:none"><div class="brand-title">GHANI STUDIOZ</div><div class="sprocket-wrap"><div class="sprocket-track" id="sprocketTrack"></div></div><header><div><div class="eyebrow">Private Client Dashboard</div><h1>Client <span>Portal</span></h1></div><button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button></header><div class="stats"><div class="stat"><div class="num" id="statTotal">0</div><div style="font-size:11px;color:#a89bc0">Total Clients</div></div><div class="stat"><div class="num" id="statActive">0</div><div style="font-size:11px;color:#a89bc0">Active</div></div></div><main style="max-width:1180px;margin:0 auto;padding:22px 32px 80px"><div class="toolbar"><input id="searchBox" type="text" placeholder="🔍 Search..."><select id="filterStatus"><option value="">All statuses</option><option>Active</option><option>Completed</option><option>On Hold</option><option>Cancelled</option></select><button class="btn btn-primary" id="addBtn">+ Add Client</button></div><div id="loadingState" style="text-align:center;padding:40px;color:#a89bc0">Loading...</div><div class="grid" id="clientGrid"></div></main>
+<div id="appContent" style="display:none"><div class="brand-title">GHANI STUDIOZ</div><div class="sprocket-wrap"><div class="sprocket-track" id="sprocketTrack"></div></div><header><div><div class="eyebrow">Private Client Dashboard</div><h1>Client <span>Portal</span></h1></div><button class="btn btn-ghost btn-small" id="logoutBtn">Log Out</button></header><div class="stats"><div class="stat"><div class="num" id="statTotal">0</div><div style="font-size:11px;color:#a89bc0">Total Clients</div></div><div class="stat"><div class="num" id="statActive">0</div><div style="font-size:11px;color:#a89bc0">Active</div></div><div class="stat clickable" id="statMonthIncomeBox"><div class="num" id="statMonthIncome">PKR 0</div><div style="font-size:11px;color:#a89bc0">This Month Income (tap for history)</div></div><div class="stat" id="statTotalIncomeBox"><div class="num" id="statTotalIncome">PKR 0</div><div style="font-size:11px;color:#a89bc0">Total Income (All Time)</div></div></div><main style="max-width:1180px;margin:0 auto;padding:22px 32px 80px"><div class="toolbar"><input id="searchBox" type="text" placeholder="🔍 Search..."><select id="filterStatus"><option value="">All statuses</option><option>Active</option><option>Completed</option><option>On Hold</option><option>Cancelled</option></select><button class="btn btn-primary" id="addBtn">+ Add Client</button></div><div id="loadingState" style="text-align:center;padding:40px;color:#a89bc0">Loading...</div><div class="grid" id="clientGrid"></div></main>
 <div class="overlay" id="overlay"><div class="modal"><h2 id="modalTitle" style="font-family:'Space Grotesk';margin:0 0 18px">Add Client</h2><div class="form-grid"><label>Client ID<input id="f_id"></label><label>Name *<input id="f_name"></label><label>Contact<input id="f_contact"></label><label>Email<input id="f_email" type="email"></label><label>Social Media<input id="f_tiktok"></label><label>Services<select id="f_services"><option>videos editing</option><option>photo editing</option><option>thumbnail design</option><option>content writing</option><option>social media management</option></select></label><label>Approach<input id="f_approach"></label><label>Edits Type<input id="f_edits"></label><label>Hiring Date<input id="f_hiring" type="date"></label><label>Manager<input id="f_manager"></label><label>Manager Contact<input id="f_managercontact"></label><label>Status<select id="f_status"><option>Active</option><option>Completed</option><option>On Hold</option><option>Cancelled</option></select></label><label>Fee<input id="f_fee" type="number"></label><label>Follow-up<input id="f_followup" type="date"></label><label class="full">Notes<textarea id="f_notes" rows="2"></textarea></label></div><div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px"><button class="btn btn-ghost" id="cancelBtn">Cancel</button><button class="btn btn-primary" id="saveBtn">Save Client</button></div></div></div>
+<div class="overlay" id="incomeOverlay"><div class="modal income-modal"><div style="display:flex;justify-content:space-between;margin-bottom:14px"><h2 style="font-family:'Space Grotesk';margin:0">Monthly Income</h2><button class="btn btn-ghost btn-small" id="incomeCloseBtn">Close</button></div><div style="font-size:11px;color:#a89bc0;margin-bottom:14px">Har batch ki <b>Completion Date</b> ke hisaab se calculate hota hai (Videos count × Fee per Video).</div><div id="incomeList"></div></div></div>
 <div class="overlay" id="videosOverlay"><div class="modal videos-modal"><div style="display:flex;justify-content:space-between;margin-bottom:14px"><div><h2 id="videosModalTitle" style="font-family:'Space Grotesk';margin:0">Videos</h2><div style="font-family:'JetBrains Mono';font-size:12px;color:var(--gold)" id="videosModalSub"></div></div><button class="btn btn-ghost btn-small" id="videosCloseBtn">Close</button></div><div class="videos-summary" id="videosSummary"></div><div class="video-form"><label style="grid-column:1/-1">Batch Name<input id="v_name" placeholder="e.g. ggg"></label><label>Date Received<input id="v_received" type="date"></label><label>Fee per Video<input id="v_price" type="number" placeholder="700"></label><label>How Many Videos<input id="v_count" type="number" value="1" min="1"></label><label>Videos Edited Already<input id="v_editedcount" type="number" value="0" min="0"></label><label>Completion Date<input id="v_edited" type="date"></label><button class="btn btn-primary" id="addBatchBtn" type="button">+ Add Batch</button></div><div class="video-list" id="videoList"></div></div></div></div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -128,7 +137,40 @@ function render(){
   grid.querySelectorAll('[data-videos]').forEach(b=>b.addEventListener('click',()=>openVideosModal(b.dataset.videos)));
   document.getElementById('statTotal').textContent=clients.length;
   document.getElementById('statActive').textContent=clients.filter(c=>c.status==='Active').length;
+  updateIncomeStats();
 }
+function monthlyIncomeMap(){
+  const map={};
+  clients.forEach(c=>{ (c.videos||[]).forEach(b=>{
+    const dateStr=b.edited; if(!dateStr) return; // sirf completed batches count hongi
+    const key=dateStr.slice(0,7); // YYYY-MM
+    const total=Number(b.count||0)*Number(b.price||0);
+    map[key]=(map[key]||0)+total;
+  })});
+  return map;
+}
+function updateIncomeStats(){
+  const map=monthlyIncomeMap();
+  const now=new Date(); const curKey=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const el=document.getElementById('statMonthIncome'); if(el) el.textContent='PKR '+(map[curKey]||0).toLocaleString();
+  const total=Object.values(map).reduce((s,v)=>s+v,0);
+  const tEl=document.getElementById('statTotalIncome'); if(tEl) tEl.textContent='PKR '+total.toLocaleString();
+}
+function monthLabel(key){ const [y,m]=key.split('-'); const names=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return names[Number(m)-1]+' '+y; }
+function openIncomeModal(){
+  const map=monthlyIncomeMap(); const now=new Date(); const curKey=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const keys=Object.keys(map).sort().reverse();
+  const total=Object.values(map).reduce((s,v)=>s+v,0);
+  const list=document.getElementById('incomeList');
+  let html=`<div class="income-row" style="border-color:var(--purple-soft)"><span class="m" style="color:#a875e0">ALL TIME TOTAL</span><span class="v" style="color:#a875e0">PKR ${total.toLocaleString()}</span></div>`;
+  if(!keys.length){ html+='<div style="text-align:center;padding:20px;color:#a89bc0">Abhi tak koi batch complete nahi hui.</div>'; }
+  else { html+=keys.map(k=>`<div class="income-row ${k===curKey?'current':''}"><span class="m">${monthLabel(k)}${k===curKey?' (is mahina)':''}</span><span class="v">PKR ${map[k].toLocaleString()}</span></div>`).join(''); }
+  list.innerHTML=html;
+  document.getElementById('incomeOverlay').classList.add('show');
+}
+document.getElementById('statMonthIncomeBox').onclick=openIncomeModal;
+document.getElementById('incomeCloseBtn').onclick=()=>document.getElementById('incomeOverlay').classList.remove('show');
+document.getElementById('incomeOverlay').onclick=e=>{ if(e.target===document.getElementById('incomeOverlay')) document.getElementById('incomeOverlay').classList.remove('show') }
 function openModal(uid){ pendingUid=null; editingId=uid||null; const c=uid?clients.find(x=>x.uid===uid):null; document.getElementById('f_id').value=c?c.id:nextId(); document.getElementById('f_name').value=c?c.name:''; document.getElementById('f_contact').value=c?c.contact:''; document.getElementById('f_email').value=c?c.email:''; document.getElementById('f_fee').value=c?c.fee:''; document.getElementById('f_tiktok').value=c?c.tiktok:''; document.getElementById('f_services').value=c?c.services:'videos editing'; document.getElementById('f_approach').value=c?c.approach:''; document.getElementById('f_edits').value=c?c.edits:''; document.getElementById('f_hiring').value=c?(c.hiring?.includes('/')?'':c.hiring):''; document.getElementById('f_manager').value=c?c.manager:''; document.getElementById('f_managercontact').value=c?c.managercontact:''; document.getElementById('f_status').value=c?c.status:'Active'; document.getElementById('f_followup').value=c?(c.followup?.includes('/')?'':c.followup):''; document.getElementById('f_notes').value=c?c.notes:''; overlay.classList.add('show'); }
 function closeModal(){ overlay.classList.remove('show'); editingId=null; pendingUid=null }
 async function deleteClient(uid){ if(!confirm('Delete client?')) return; try{ await deleteDoc(doc(db,"clients",uid)) }catch(e){ alert('Delete failed') } }
